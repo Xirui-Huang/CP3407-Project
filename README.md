@@ -1,5 +1,7 @@
 # CP3407-Project-JCU Gym System
 
+JCU Gym System is a system designed to provide more convenient and relevant services for all JCU gym personnel (including members, management departments, etc.). Its main function is to provide appointment service for all JCU members and to provide online application form filling service for new members.
+
 ## Team Members
 
 1. Xirui Huang
@@ -13,7 +15,7 @@
 
 # Project planning BEFORE iteration-1
 
-JCU Gym System is a system designed to provide more convenient and relevant services for all JCU gym personnel (including members, management departments, etc.). Its main function is to provide appointment service for all JCU members and to provide online application form filling service for new members.
+
 
 ### User Stories
 

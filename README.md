@@ -13,7 +13,9 @@
 
 # Project planning BEFORE iteration-1
 
-User Stories
+JCU Gym System is a system designed to provide more convenient and relevant services for all JCU gym personnel (including members, management departments, etc.). Its main function is to provide appointment service for all JCU members and to provide online application form filling service for new members.
+
+### User Stories
 
 1. Title: Membership Process Digitization, Priority: High, Estimate: 1 day
 2. Title: Check Before Booking, Priority: High, Estimate: 3 days

@@ -19,14 +19,15 @@ It is recommended to complete this assignment in a group of 2-4 students.
 
 # Project planning BEFORE iteration-1
 
+User Stories
 
-1. Membership Process Digitization, Priority: High, Estimate: 1 day
-2. Check Before Booking, Priority: High, Estimate: 3 days
-3. Equipment Status Monitoring, Priority: Medium, Estimate: 2 days
-4. Fitness Plan Recommendation, Priority: Medium, Estimate: 5 days
-5. Training Direction, Priority: High, Estimate: 5 days
-6. Community, Priority: Low, Estimate: 4 days
-7. Reward System, Priority: Medium, Estimate: 2 days
+1. Title: Membership Process Digitization, Priority: High, Estimate: 1 day
+2. Title: Check Before Booking, Priority: High, Estimate: 3 days
+3. Title: Equipment Status Monitoring, Priority: Medium, Estimate: 2 days
+4. Title: Fitness Plan Recommendation, Priority: Medium, Estimate: 5 days
+5. Title: Training Direction, Priority: High, Estimate: 5 days
+6. Title: Community, Priority: Low, Estimate: 4 days
+7. Title: Reward System, Priority: Medium, Estimate: 2 days
 
    Total: 22 days
 

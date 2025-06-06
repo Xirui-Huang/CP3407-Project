@@ -26,4 +26,38 @@ Update this at least once per week
 * 2 weeks left, xx days
 * 1 weeks left, xx days
 * 0 weeks left, xx days
-* Actual Velocity: ?? 
+* Actual Velocity: ??
+
+* ````````````````````````````````````````````````````````
+Membership System Iteration Plan
+Iteration Information
+Start Date : [Insert the beginning date of iteration]
+End Date : [Insert the ending date of iteration]
+In Progress
+Membership Process Digitization : [Developer's name or initials], [date started]
+Status : [Insert current progress percentage or specific progress details]
+Check Before Booking : [Developer's name or initials], [date started]
+Status : [Insert current progress percentage or specific progress details]
+Completed
+Equipment Status Monitoring : [Developer's name or initials], [date completed]
+Acceptance Criteria :
+The system can accurately monitor and display the condition of each piece of equipment in real-time.
+Equipment technicians can filter equipment based on status and easily identify those requiring maintenance.
+Fitness Plan Recommendation : [Developer's name or initials], [date completed]
+Acceptance Criteria :
+The system can provide personalized fitness plans based on the user's physical condition and goals.
+The plans include recommendations for exercise equipment and movements.
+Burn Down for Iteration
+22
+4 weeks left, 17 days of estimated amount of work
+2 weeks left, xx days
+1 week left, xx days
+0 weeks left, xx days
+Priority and Estimate
+Membership Process Digitization : Priority - High, Estimate - 1 day
+Check Before Booking : Priority - High, Estimate - 3 days
+Equipment Status Monitoring : Priority - Medium, Estimate - 2 days
+Fitness Plan Recommendation : Priority - Medium, Estimate - 5 days
+Training Direction : Priority - High, Estimate - 5 days
+Community : Priority - Low, Estimate - 4 days
+Reward System : Priority - Medium, Estimate - 2 days

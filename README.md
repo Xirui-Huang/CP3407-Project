@@ -17,16 +17,18 @@ It is recommended to complete this assignment in a group of 2-4 students.
 4. Juelai Li
 
 
-# Project planning BEFORE iteration-1, (see chapters 1-3)
-Checklist/TODOs: 
-* Update the following during each week prac session
-* github entry timestamp is BEFORE the iteration-1
-* User stories are correct: see p39
-* Must have more user stories than fits into iterations 1 and 2. To practice the priority.
-* [user story title](./user_stories/user_story_01_title.md), priority XX, YY days 
-* ...
+# Project planning BEFORE iteration-1
 
-Total: YY days
+
+1. Membership Process Digitization, Priority: High, Estimate: 1 day
+2. Check Before Booking, Priority: High, Estimate: 3 days
+3. Equipment Status Monitoring, Priority: Medium, Estimate: 2 days
+4. Fitness Plan Recommendation, Priority: Medium, Estimate: 5 days
+5. Training Direction, Priority: High, Estimate: 5 days
+6. Community, Priority: Low, Estimate: 4 days
+7. Reward System, Priority: Medium, Estimate: 2 days
+
+   Total: 22 days
 
 
 ## Iteration 1 [duration 3-4 weeks], add your start and end dates 

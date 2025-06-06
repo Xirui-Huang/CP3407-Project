@@ -1,5 +1,5 @@
 ## **Membership Process Digitization** 
-<h3><b>Description:</b>  
-As a student, I want the process of membership to be more convenient, the paper-based process is very painful. So that i can process it online with a few clicks (the system will automatically fill the information of user base on student ID) </h3> 
-<<h3>Priority: High</h3>
+<h4><b>Description:</b>  
+As a student, I want the process of membership to be more convenient, the paper-based process is very painful. So that i can process it online with a few clicks (the system will automatically fill the information of user base on student ID) </h4> 
+<h3>Priority: High</h3>
 <h3>Estimate: 1 days</h3>

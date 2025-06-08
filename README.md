@@ -15,6 +15,21 @@ JCU Gym System is a system designed to provide more convenient and relevant serv
 
 # Project planning BEFORE iteration-1
 
+## Main Goal for the Project
+
+To develop a comprehensive digital gym management platform for JCU students that transforms the current manual and fragmented system into a fully online, user-friendly, and engaging experience. The system will:
+
+* Streamline gym membership registration through automated student ID integration
+
+* Improve transparency and convenience in booking by showing real-time availability and crowd levels
+
+* Promote safe and effective workouts through guided instructions and personalized fitness plans
+
+* Support maintenance and staff coordination via equipment status monitoring
+
+* Boost student engagement through a reward system and an interactive fitness community
+
+Ultimately, the platform aims to increase gym participation, reduce administrative burden, and enhance the health and safety of all users.
 
 
 ### User Stories
@@ -29,17 +44,25 @@ JCU Gym System is a system designed to provide more convenient and relevant serv
 
    Total: 22 days
 
+### Project Timeline
+
+  | No.|   Phase	              |Duration                    |Weeks         |
+  |----|:----------------------:|:--------------------------:|:------------:|
+  | 1. | Iteration 1            |   4 weeks                  |   Week 3 – 7   |
+  | 2. | Iteration 2            |   3 weeks                  |   Week 7 – 10  |
+  | 3. | Final Touch-up & Demo  |   Last few days of Week 10 |   Week 10    |
 
 ## Iteration 1 [duration 3-4 weeks], add your start and end dates 
 
-* Goal is to have 2 iterations during a trimester of teaching.
-* Update the following during each week prac session
-* During pracs, you may experiment with using other github ways of tracking changes, e.g. via pull requests.
+### Main Goal for Iteration-1
 
-1. [user story title](./user_stories/user_story_01_title.md), priority XX, YY days 
-2. ...
+#### Deliver a functional core gym access system that enables:
 
-Total: YY days
+* Students to join online via their student ID
+
+* Real-time visibility of gym booking slots
+
+* Guided instruction on proper exercise technique
 
 
 ### Iteration 2 [duration 3-4 weeks], add your start and end dates

@@ -8,7 +8,7 @@ JCU Gym System is a system designed to provide more convenient and relevant serv
 
 2. Letian You
 
-3. Hewei Li
+3. Hewei Lii
 
 4. Juelai Li
 

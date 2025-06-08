@@ -32,7 +32,7 @@ To develop a comprehensive digital gym management platform for JCU students that
 Ultimately, the platform aims to increase gym participation, reduce administrative burden, and enhance the health and safety of all users.
 
 
-### User Stories
+### All User Stories
 
 1. Title: Membership Process Digitization, Priority: High, Estimate: 1 day
 2. Title: Check Before Booking, Priority: High, Estimate: 3 days

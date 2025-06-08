@@ -65,7 +65,7 @@ Ultimately, the platform aims to increase gym participation, reduce administrati
 * Guided instruction on proper exercise technique
 
 
-### Iteration 2 [duration 3-4 weeks], add your start and end dates
+## Iteration 2 [ Week 7 - Week 10 ]
 Goal is to have 2 iterations during a trimester of teaching.
 1. [user story title](./user_stories/user_story_01_title.md), priority XX, YY days 
 2. ...

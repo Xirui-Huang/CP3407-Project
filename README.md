@@ -52,7 +52,7 @@ Ultimately, the platform aims to increase gym participation, reduce administrati
   | 2. | Iteration 2            |   3 weeks                  |   Week 7 – 10  |
   | 3. | Final Touch-up & Demo  |   Last few days of Week 10 |   Week 10    |
 
-## Iteration 1 [duration 3-4 weeks], add your start and end dates 
+## Iteration 1 [ Week 3 - Week 7 ] 
 
 ### Main Goal for Iteration-1
 

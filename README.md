@@ -64,6 +64,13 @@ Ultimately, the platform aims to increase gym participation, reduce administrati
 
 * Guided instruction on proper exercise technique
 
+### User Story
+
+| ID | Title                           | Priority | Est. Days | Notes                                |
+| -- | ------------------------------- | -------- | --------- | ------------------------------------ |
+| 1  | Membership Process Digitization | High     | 1 day     | Auto-fill user info using student ID |
+| 2  | Check Before Booking            | High     | 3 days    | View timeslots + number of bookings  |
+| 5  | Training Direction              | High     | 5 days    | Exercise guidance for safety         |
 
 ## Iteration 2 [ Week 7 - Week 10 ]
 Goal is to have 2 iterations during a trimester of teaching.

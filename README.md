@@ -48,7 +48,7 @@ Ultimately, the platform aims to increase gym participation, reduce administrati
 
   | No.|   Phase	              |Duration                    |Weeks         |
   |----|:----------------------:|:--------------------------:|:------------:|
-  | 1. | Iteration 1            |   4 weeks                  |   Week 3 – 7   |
+  | 1. | Iteration 1            |   4 weeks                  |   Week 3 – 6   |
   | 2. | Iteration 2            |   3 weeks                  |   Week 7 – 10  |
   | 3. | Final Touch-up & Demo  |   Last few days of Week 10 |   Week 10    |
 

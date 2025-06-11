@@ -11,7 +11,7 @@
 
 # Project planning BEFORE iteration-1, (see chapters 1-3)
 ### User Stories (Backlog)
-- [0] **UserStories** | (./user_stories/user_stories.md)
+- [0] [**UserStories**](./user_stories/user_stories.md)
 
 - [1] **Prototype** | Priority: High | Estimate: 3 days
     - *Description*: As a customer, I want have a briefly look about what the website will look like, so that I can make sure the product is what I want.

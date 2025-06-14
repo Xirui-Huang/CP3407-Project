@@ -1,6 +1,6 @@
 # Iteration-1 Board [Week 3 - Week 6] 
 
-* Assumed Velocity: ?? 
+* Assumed Velocity: 10 days
 * Number of developers: 4
 * Total estimated amount of work: 9 days
 ## User Story

@@ -1,4 +1,4 @@
-# Iteration-1 Board [Week 3 - Week 7] 
+# Iteration-1 Board [Week 3 - Week 6] 
 
 * Assumed Velocity: ?? 
 * Number of developers: 4

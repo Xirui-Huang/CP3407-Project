@@ -7,7 +7,7 @@
 
 | ID | Title                           | Priority | Est. Days | Notes                                |
 | -- | ------------------------------- | -------- | --------- | ------------------------------------ |
-| 1  | Membership Process Digitization | High     | 1 day     | Auto-fill user info using student ID |
+| 1  | Membership Process Digitization | High     | 3 day     | Auto-fill user info using student ID |
 | 2  | Check Before Booking            | High     | 3 days    | View timeslots + number of bookings  |
 | 5  | Training Direction              | High     | 5 days    | Exercise guidance for safety         |
 
@@ -38,8 +38,6 @@
 
 ### Burn Down for iteration-1 (see chapter 4):
 Update this at least once per week
-* 4 weeks left, 9 days of estimated amount of work 
-* 2 weeks left, 6 days
-* 1 weeks left, xx days
-* 0 weeks left, xx days
-* Actual Velocity: ?? 
+
+* ![image](https://github.com/user-attachments/assets/bbcd643d-c81a-4300-bf33-1aa9fa960f62)
+

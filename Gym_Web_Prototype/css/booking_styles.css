@@ -1,3 +1,4 @@
+/* 全局基础样式 */
 body {
     margin: 0;
     padding: 0;
@@ -15,6 +16,7 @@ body {
     box-sizing: border-box;
 }
 
+/* 导航栏 */
 .nav_user, .nav_admin {
     margin: 20px 0;
 }
@@ -42,6 +44,7 @@ body {
     color: white;
 }
 
+/* 分隔线 */
 .divider {
     width: 100%;
     max-width: 100%;
@@ -51,6 +54,7 @@ body {
     margin: 20px 0;
 }
 
+/* 表格样式 */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -67,6 +71,42 @@ th {
     background-color: #f0f0f0;
 }
 
+/* 分页样式 */
+.pagination {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.pagination button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#pageInfo {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#bookingTableBody tr {
+    line-height: 1.2em;
+    height: 0px;
+    font-size: 15px;
+}
+
+.delete-link {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.delete-link:hover {
+    font-weight: bold;
+}
+
+
+/* 表单按钮 */
 button {
     margin-top: 15px;
     padding: 10px 20px;
@@ -82,6 +122,7 @@ button:hover {
     background-color: #002f5e;
 }
 
+/* Booking Details: 两列布局 */
 .booking-flex {
     display: flex;
     justify-content: space-between;
@@ -111,12 +152,14 @@ button:hover {
     text-align: left;
 }
 
+/* 页脚样式 */
 footer {
     margin-top: 40px;
     font-size: 14px;
     text-align: center;
 }
 
+/* 响应式：小屏自动换行 */
 @media (max-width: 640px) {
     .booking-flex {
         flex-direction: column;

@@ -3,57 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        JCU Gym System
-    </title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>JCU Gym System</title>
+    <link rel="stylesheet" href="css/booking_styles.css">
 </head>
 <body>
     <div class="container">
         <header>
             <h1>JCU Gym System</h1>
             <a href="index.html">
-                <img src="image/jcu_logo.png">
+                <img src="image/jcu_logo.png" alt="JCU Logo">
             </a>
         </header>
 
         <nav class="nav_user">
             <ul class="menu">
                 <li class="menu-choice"><a href="online_registration.html">Online Registration</a></li>
-                <li class="menu-choice"><a href="session_booking.html">Session Booking</a></li> 
+                <li class="menu-choice"><a href="session_booking.html">Session Booking</a></li>
                 <li class="menu-choice"><a href="virtual_gym_tour.html">Virtual Gym Tour</a></li>
                 <li class="menu-choice"><a href="ai_powered_trainer.html">AI-Powered Trainer</a></li>
                 <li class="menu-choice"><a href="profile.html">Profile</a></li>
             </ul>
         </nav>
 
-    <!--administrator navigation
-        <nav class="nav_admin">
-            <ul class="menu">
-                <li class="menu-choice"><a href="user_monitoring.html">User Monitoring</a></li>
-                <li class="menu-choice"><a href="usage_tracking.html">Usage Tracking</a></li> 
-            </ul>
-        </nav> 
-    -->
-
-    <hr class="divider" width="1500" color="black" size="3">
+        <hr class="divider">
 
         <main>
-            <img src="image/previous_booking.png">
-            <img src="image/session_booking.png">
-        </main>
-        
-    <hr class="divider" width="1500" color="black" size="3">
+            <!-- Previous Bookings -->
+            <section>
+                <h2>My Previous Bookings</h2>
+                <table border="1" width="100%" cellpadding="10" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Booking Reference</th>
+                            <th>User Name</th>
+                            <th>Booking Date</th>
+                            <th>Booking Time</th>
+                            <th>Booked On</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingTableBody">
+                        <!-- JS 动态填充 -->
+                    </tbody>
+                </table>
+            </section>
 
-    <footer>
-        <div class="contact_info">
-            <p>Email: <a href="mailto:jcu.edu.sg">jcu.edu.sg</a></p>
-            <p>Phone: <a href="tel:12345678">12345678</a></p>
-            <p> fax 4779 1244 </p>
-            <p> address: 149 Sims Drive Singapore 387380</p>
-            <p>&copy; Copyright 2022. ALL Rights Reserved.</p>
-        </div>
-    </footer>
+            <hr class="divider">
+
+            <!-- Booking Details -->
+            <section>
+                <h2>Booking Details</h2>
+                <form id="bookingForm">
+                    <div class="booking-flex">
+                        <div class="date-column">
+                            <h3>Pick a Date:</h3>
+                            <div id="dateOptions"></div>
+                        </div>
+                        <div class="time-column">
+                            <h3>Pick Timing:</h3>
+                            <div id="timeOptions">
+                                <label><input type="radio" name="time" value="09:00:00 - 11:00:00">09:00:00 - 11:00:00</label><br>
+                                <label><input type="radio" name="time" value="10:00:00 - 12:00:00">10:00:00 - 12:00:00</label><br>
+                                <label><input type="radio" name="time" value="11:00:00 - 13:00:00">11:00:00 - 13:00:00</label><br>
+                                <label><input type="radio" name="time" value="12:00:00 - 14:00:00">12:00:00 - 14:00:00</label><br>
+                                <label><input type="radio" name="time" value="13:00:00 - 15:00:00">13:00:00 - 15:00:00</label><br>
+                                <label><input type="radio" name="time" value="14:00:00 - 16:00:00">14:00:00 - 16:00:00</label><br>
+                                <label><input type="radio" name="time" value="15:00:00 - 17:00:00">15:00:00 - 17:00:00</label><br>
+                                <label><input type="radio" name="time" value="16:00:00 - 18:00:00">16:00:00 - 18:00:00</label><br>
+                                <label><input type="radio" name="time" value="17:00:00 - 19:00:00">17:00:00 - 19:00:00</label><br>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <button type="button" onclick="submitBooking()">Submit Booking</button>
+                </form>
+            </section>
+        </main>
+
+        <hr class="divider">
+
+        <footer>
+            <div class="contact_info">
+                <p>Email: <a href="mailto:jcu.edu.sg">jcu.edu.sg</a></p>
+                <p>Phone: <a href="tel:12345678">12345678</a></p>
+                <p>fax 4779 1244</p>
+                <p>address: 149 Sims Drive Singapore 387380</p>
+                <p>&copy; Copyright 2022. ALL Rights Reserved.</p>
+            </div>
+        </footer>
     </div>
+
+    <!-- JavaScript -->
+    <script>
+        // set time
+        const dateContainer = document.getElementById('dateOptions');
+        const today = new Date();
+        let count = 0, i = 0;
+        while (count < 6) {
+            const tempDate = new Date();
+            tempDate.setDate(today.getDate() + i);
+            if (tempDate.getDay() !== 0) {
+                const dateStr = tempDate.toISOString().split('T')[0];
+                const weekday = tempDate.toLocaleDateString('en-US', { weekday: 'long' });
+                dateContainer.innerHTML += `<label><input type="radio" name="date" value="${dateStr}">${dateStr} (${weekday})</label><br>`;
+                count++;
+            }
+            i++;
+        }
+
+        // Data 
+        const bookings = [
+            {
+            }
+        ];
+
+        const tableBody = document.getElementById('bookingTableBody');
+        bookings.forEach(b => {
+            tableBody.innerHTML += `
+                <tr>
+                    <td>${b.ref}</td>
+                    <td>${b.user}</td>
+                    <td>${b.date}</td>
+                    <td>${b.time}</td>
+                    <td>${b.bookedOn}</td>
+                    <td><button onclick="deleteRow(this)">Delete</button></td>
+                </tr>
+            `;
+        });
+
+        function submitBooking() {
+            const selectedDate = document.querySelector('input[name="date"]:checked');
+            const selectedTime = document.querySelector('input[name="time"]:checked');
+
+            if (!selectedDate || !selectedTime) {
+                alert("Please select both a date and a time.");
+                return;
+            }
+
+            const user = "Xirui Huang";
+            const date = selectedDate.value;
+            const time = selectedTime.value;
+
+            const now = new Date();
+            const utc8 = new Date(now.getTime() + 8 * 60 * 60 * 1000);
+            const bookedOn = utc8.toISOString().slice(0, 19).replace('T', ' ');
+
+            const ref = `GYM${new Date().getFullYear()}${Math.floor(Math.random() * 1000000).toString().padStart(6, '0')}`;
+
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${ref}</td>
+                <td>${user}</td>
+                <td>${date}</td>
+                <td>${time}</td>
+                <td>${bookedOn}</td>
+                <td><button onclick="deleteRow(this)">Delete</button></td>
+            `;
+            tableBody.appendChild(row);
+            document.getElementById("bookingForm").reset();
+        }
+
+        function deleteRow(button) {
+            button.closest('tr').remove();
+        }
+    </script>
 </body>
 </html>
+

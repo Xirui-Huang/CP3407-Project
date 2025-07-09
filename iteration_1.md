@@ -5,11 +5,11 @@
 * Total estimated amount of work: 9 days
 ## User Story
 
-| ID | Title                           | Priority | Est. Days | Notes                                |
+| ID | Title                           | Priority | Est. Days | Describes                                |
 | -- | ------------------------------- | -------- | --------- | ------------------------------------ |
-| 1  | Membership Process Digitization | High     | 3 day     | Auto-fill user info using student ID |
-| 2  | Check Before Booking            | High     | 3 days    | View timeslots + number of bookings  |
-| 5  | Training Direction              | High     | 5 days    | Exercise guidance for safety         |
+| 1  | Membership Process Digitization | High     | 3 day     | As a student, I want the process of register can be more convenient compare to the painful paper-based register, so that i can register it online with a few clicks. |
+| 2  | Check Before Booking            | High     | 3 days    |  As a user, I want to know which time slot already been booked and how many people in there before booking, so that i can see which time slot is more suitable to my schedule.  |
+| 5  | Training Direction              | High     | 5 days    |  As a student, I want to have some video to teach me how to exercise correctly, so that i can avoid the injuries caused by the incorrect movements.   |
 
 ## Backlog – User Stories/Tasks
 

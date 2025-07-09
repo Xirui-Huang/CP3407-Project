@@ -28,16 +28,16 @@
 
 | Task                                      | Developer      | Start Date    |
 | ----------------------------------------- | -------------- | ------------- |
-|     Basic Architectural                   |  Hewei Li      | June 4, 2025  |
+|  Basic Architectural                      |  Hewei Li      | June 4, 2025  |
 |  Improve the Prototype                    |  Juelai Li     | June 11, 2025 |
 |  Connect with Database                    |  Letian You    | June 11, 2025 |
 | Ensure the Data are Suitable for Database |  Xirui Huang   | June 13, 2025 |
 
 ## Completed
 | Task                      | Developer | Date Completed |
-| ------------------------- | :-------: | -------------- |
-|    Basic Architectural    | Hewei Li  |                |
-|         Null              |           |                |
+| ------------------------- | :-------: | :------------: |
+|    Basic Architectural    | Hewei Li  | June 5, 2025   |
+|    Connect with Database  | Letian You| June 14, 2025  |
 
 ### Burn Down for iteration-1 (see chapter 4):
 Update this at least once per week

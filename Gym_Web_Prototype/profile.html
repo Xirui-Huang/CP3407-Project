@@ -6,7 +6,7 @@
     <title>
         JCU Gym System
     </title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/profile.css">
 </head>
 <body>
     <div class="container">
@@ -16,42 +16,82 @@
                 <img src="image/jcu_logo.png">
             </a>
         </header>
-
-        <nav class="nav_user">
-            <ul class="menu">
-                <li class="menu-choice"><a href="online_registration.html">Online Registration</a></li>
-                <li class="menu-choice"><a href="session_booking.html">Session Booking</a></li> 
-                <li class="menu-choice"><a href="material.html.html">AI-Powered Trainer</a></li>
-                <li class="menu-choice"><a href="profile.html">Profile</a></li>
-            </ul>
-        </nav>
-
-    <!--administrator navigation
-        <nav class="nav_admin">
-            <ul class="menu">
-                <li class="menu-choice"><a href="user_monitoring.html">User Monitoring</a></li>
-                <li class="menu-choice"><a href="usage_tracking.html">Usage Tracking</a></li> 
-            </ul>
-        </nav> 
-    -->
-
-    <hr class="divider" width="1500" color="black" size="3">
-
-        <main>
-            <img src="image/profile.png">
-        </main>
-        
-    <hr class="divider" width="1500" color="black" size="3">
-
-    <footer>
-        <div class="contact_info">
-            <p>Email: <a href="mailto:jcu.edu.sg">jcu.edu.sg</a></p>
-            <p>Phone: <a href="tel:12345678">12345678</a></p>
-            <p> fax 4779 1244 </p>
-            <p> address: 149 Sims Drive Singapore 387380</p>
-            <p>&copy; Copyright 2022. ALL Rights Reserved.</p>
+<body>
+    <div class="menu">
+        <li class="menu-choice active"><a href="virtual_gym_tour.html">Virtual Gym Tour</a></li>
+        <li class="menu-choice"><a href="online_registration.html">Online Registration</a></li>
+        <li class="menu-choice"><a href="session_booking.html">Session Booking</a></li> 
+        <li class="menu-choice"><a href="ai_powered_trainer.html">AI-Powered Trainer</a></li>
+        <li class="menu-choice"><a href="profile.html">Profile</a></li>
+    </div>
+    <div class="divider"></div>
+    <div class="container">
+        <div class="header">
+            <img src="profile-placeholder.png" alt="Profile Picture">
+            <h1>Letian You</h1>
+            <p>jd118488</p>
         </div>
-    </footer>
+        <div class="profile">
+            <div class="profile-info">
+                <h2>Basic Information</h2>
+                <div>
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" value="Letian You" readonly>
+                </div>
+                <div>
+                    <label for="pronunciation">Pronunciation</label>
+                    <input type="text" id="pronunciation" placeholder="Add pronunciation">
+                </div>
+                <div>
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" value="jd118488@mail-jcu.jcu.edu.au" readonly>
+                </div>
+                <div>
+                    <label for="pronouns">Pronouns</label>
+                    <input type="text" id="pronouns" placeholder="Add Pronouns">
+                </div>
+                <div>
+                    <label for="student-id">Student ID</label>
+                    <input type="text" id="student-id" value="1460684" readonly>
+                </div>
+                <h2>Additional Information</h2>
+                <div>
+                    <label for="gender">Gender</label>
+                    <input type="text" id="gender" placeholder="Add gender">
+                </div>
+                <div>
+                    <label for="additional-name">Additional Name</label>
+                    <input type="text" id="additional-name" placeholder="Add additional name">
+                </div>
+                <div>
+                    <label for="education-level">Education Level</label>
+                    <input type="text" id="education-level" placeholder="Add education level">
+                </div>
+            </div>
+            <div class="system-settings">
+                <h2>System Settings</h2>
+                <div>
+                    <label for="language">Language</label>
+                    <input type="text" id="language" value="System Default (English (Australia))" readonly>
+                </div>
+                <div>
+                    <label for="privacy">Privacy Settings</label>
+                    <input type="text" id="privacy" value="Only educators can view my profile information" readonly>
+                </div>
+                <div class="notification-settings">
+                    <h3>Global Notification Settings</h3>
+                    <label>
+                        <input type="checkbox" checked> Stream notifications
+                    </label>
+                    <label>
+                        <input type="checkbox" checked> Email notifications
+                    </label>
+                    <label>
+                        <input type="checkbox" checked> Push notifications
+                    </label>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

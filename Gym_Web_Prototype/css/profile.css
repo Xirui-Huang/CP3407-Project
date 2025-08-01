@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #f4f4f9;
+}
+.container {
+    width: 100%;
+    max-width: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.nav_user, .nav_admin {
+    margin: 20px 0;
+}
+.menu {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    background-color: #fff;
+    width: 100%;
+    border-bottom: 2px solid #000;
+}
+.menu-choice a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+.menu-choice a:hover {
+    background: #333;
+    color: white;
+}
+.menu-choice.active a {
+    background-color: #333;
+    color: #fff;
+}
+.header {
+    margin: 20px 0;
+}
+.header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.header h1 {
+    margin: 10px 0;
+    font-size: 24px;
+}
+.header p {
+    margin: 5px 0 0;
+    color: #666;
+}
+.profile {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.profile-info, .system-settings {
+    width: 48%;
+}
+.profile-info div, .system-settings div {
+    margin-bottom: 15px;
+}
+.profile-info label, .system-settings label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+.profile-info input, .system-settings input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.profile-info input[type="text"] {
+    margin-bottom: 10px;
+}
+.system-settings label {
+    font-weight: bold;
+}
+.notification-settings {
+    margin-top: 20px;
+}
+.notification-settings label {
+    display: block;
+    margin-bottom: 5px;
+}
+.notification-settings input[type="checkbox"] {
+    margin-right: 5px;
+}

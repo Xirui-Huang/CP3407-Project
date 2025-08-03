@@ -3,238 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>James Cook University Gym - Login</title>
-    <style>
-        :root {
-            --primary-color: #0066cc;
-            --secondary-color: #f2f2f2;
-            --accent-color: #ff9900;
-            --text-color: #333;
-            --error-color: #e74c3c;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px 0;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 5px;
-        }
-        
-        .container {
-            display: flex;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .sidebar {
-            width: 200px;
-            background-color: var(--secondary-color);
-            padding: 20px;
-            border-radius: 5px;
-            margin-right: 20px;
-        }
-        
-        .sidebar h3 {
-            margin-top: 0;
-            text-align: center;
-        }
-        
-        .sidebar ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        
-        .sidebar li {
-            padding: 10px 0;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .sidebar li:last-child {
-            border-bottom: none;
-        }
-        
-        .sidebar a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-        
-        .sidebar a.active {
-            font-weight: bold;
-        }
-        
-        .login-container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            flex: 1;
-        }
-        
-        .form-group {
-            margin-bottom: 15px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-        
-        input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-        
-        button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            width: 100%;
-        }
-        
-        button:hover {
-            background-color: #0055aa;
-        }
-        
-        .error {
-            color: var(--error-color);
-            font-size: 14px;
-            margin-top: 5px;
-        }
-        
-        .register-link {
-            display: block;
-            text-align: center;
-            margin-top: 15px;
-        }
-        
-        .register-link a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-        
-        .register-link a:hover {
-            text-decoration: underline;
-        }
-        
-        .login-title {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-    </style>
+    <title>StudentFirst Login</title>
+    <link rel="stylesheet" href="css/login.css">
 </head>
-<nav class="nav_user">
-            <ul class="menu">
-                <li class="menu-choice"><a href="online_registration.html">Online Registration</a></li>
-                <li class="menu-choice"><a href="session_booking.html">Session Booking</a></li> 
-                <li class="menu-choice"><a href="virtual_gym_tour.html">Virtual Gym Tour</a></li>
-                <li class="menu-choice"><a href="ai_powered_trainer.html">AI-Powered Trainer</a></li>
-                <li class="menu-choice"><a href="profile.html">Profile</a></li>
-                <li class="menu-choice"><a href="register.html">register</a></li>
-            </ul>
-        </nav>
 <body>
-    <header>
-        <h1>James Cook University Gym</h1>
-        <p>Login Page</p>
-    </header>
-    
-    <div class="container">
-        <div class="sidebar">
-            <h3>Steps</h3>
-            <ul>
-                <li><a href="register.html">Step 1: Register</a></li>
-                <li><a href="#" class="disabled">Step 2: Additional Info</a></li>
-                <li><a href="#login" class="active">Step 3: Login</a></li>
-            </ul>
-        </div>
-        
-        <div class="login-container">
-            <h2 class="login-title">Member Login</h2>
-            <form id="login-form">
-                <div class="form-group">
-                    <label for="jcu-id">JCU ID:</label>
-                    <input type="text" id="jcu-id" name="jcu-id" required>
-                    <div class="error" id="jcu-id-error"></div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                    <div class="error" id="password-error"></div>
-                </div>
-                
-                <div class="form-group">
-                    <button type="submit">Login</button>
-                </div>
-            </form>
-            
-            <div class="register-link">
-                <p>Not a member yet? <a href="register.html">Register here</a></p>
-            </div>
-        </div>
+    <div class="login-container">
+        <h2>Welcome Back to StudentFirst</h2>
+        <form id="loginForm">
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
     </div>
-    
+    <img src="/Gym_Web_Prototype/image/jcu_logo.png" alt="Logo" class="logo">
+
     <script>
-        document.getElementById('login-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Reset all error messages
-            const errorElements = document.querySelectorAll('.error');
-            errorElements.forEach(element => {
-                element.textContent = '';
-            });
-            
-            // Simple form validation
-            let hasError = false;
-            
-            // Check required fields
-            const requiredFields = document.querySelectorAll('input[required]');
-            requiredFields.forEach(field => {
-                if (!field.value) {
-                    const errorId = `${field.id}-error`;
-                    const errorElement = document.getElementById(errorId);
-                    if (errorElement) {
-                        errorElement.textContent = 'This field is required.';
-                    }
-                    hasError = true;
-                }
-            });
-            
-            // Check JCU ID format
-            const jcuId = document.getElementById('jcu-id');
-            const jcuIdRegex = /^[j][a-z]\d{6}$/i;
-            if (jcuId.value && !jcuIdRegex.test(jcuId.value)) {
-                document.getElementById('jcu-id-error').textContent = 'Please enter a valid JCU ID (format: j[a-z]1234).';
-                hasError = true;
-            }
-            
-            // In a real application, you would check these credentials against a database
-            if (!hasError) {
-                // Here you would typically send a request to a server to verify credentials
-                // For demonstration purposes, we'll assume the login is successful
-                alert('Login successful!');
-                // Redirect to dashboard or home page
-                window.location.href = 'dashboard.html'; // Replace with your actual dashboard URL
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // 阻止表单的默认提交行为
+
+            var username = document.querySelector('input[type="text"]').value;
+            var password = document.querySelector('input[type="password"]').value;
+
+            // 简单的验证示例
+            if (username === '123' && password === '123') {
+                // 如果验证成功，跳转到session_booking.html
+                window.location.href = 'session_booking.html';
+            } else {
+                alert('Invalid username or password');
             }
         });
     </script>

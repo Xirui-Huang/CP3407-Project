@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym System Login</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-container">
+            <img src="/Gym_Web_Prototype/image/jcu.png" alt="Header Logo" class="header-logo">
+            <img src="/Gym_Web_Prototype/image/jcu_gym_logo.png" alt="Form Logo" class="logo">
+        </div>
+        <h2>Welcome Back to Gym System</h2>
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="input-group">
+                <img src="/Gym_Web_Prototype/image/user.png" alt="User Icon" class="input-icon">
+                <input type="text" placeholder="Username" required>
+            </div>
+            <div class="input-group">
+                <img src="/Gym_Web_Prototype/image/password.png" alt="Password Icon" class="input-icon">
+                <input type="password" placeholder="Password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // 阻止表单的默认提交行为
+
+            var username = document.querySelector('input[type="text"]').value;
+            var password = document.querySelector('input[type="password"]').value;
+
+            // 简单的验证示例
+            if (username === '123' && password === '123') {
+                // 如果验证成功，跳转到session_booking.html
+                window.location.href = 'session_booking.html';
+            } else {
+                alert('Invalid username or password');
+            }
+        });
+    </script>
+</body>
+</html>

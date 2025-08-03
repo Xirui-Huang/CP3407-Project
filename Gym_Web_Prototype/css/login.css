@@ -1,4 +1,4 @@
- body {
+body {
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
@@ -12,24 +12,31 @@
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 350px;
+            width: 500px; /* 调整宽度 */
             text-align: center;
         }
-        .login-container h2 {
+        .login-container .logo {
+            width: 50px;
             margin-bottom: 20px;
+        }
+        .login-container h2 {
+            margin-bottom: 30px;
+            color: #2e8b57;
         }
         .login-container input[type="text"],
         .login-container input[type="password"] {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
+            width: 80%;
+            padding: 15px;
+            margin: 10px auto;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
+            display: block;
         }
         .login-container button {
-            width: 100%;
-            padding: 12px;
+            width: 80%;
+            padding: 15px;
+            margin-top: 20px;
             background-color: #2e8b57;
             color: white;
             border: none;
@@ -39,9 +46,9 @@
         .login-container button:hover {
             background-color: #26754a;
         }
-        .logo {
+        .header-logo {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 100px;
+            top: 50px;
+            right: 40px;
+            width: 250px;
         }

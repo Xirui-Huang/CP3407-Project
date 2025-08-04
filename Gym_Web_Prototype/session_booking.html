@@ -17,10 +17,11 @@
 
     <nav class="nav_user">
       <ul class="menu">
-          <li class="menu-choice"><a href="online_registration.html">Online Registration</a></li>
-          <li class="menu-choice"><a href="session_booking.html">Session Booking</a></li> 
-          <li class="menu-choice"><a href="material.html.html">AI-Powered Trainer</a></li>
-          <li class="menu-choice"><a href="profile.html">Profile</a></li>
+        <li class="menu-choice"><a href="online_registration.html">Online Registration</a></li>
+        <li class="menu-choice"><a href="session_booking.html">Session Booking</a></li>
+        <li class="menu-choice"><a href="virtual_gym_tour.html">Virtual Gym Tour</a></li>
+        <li class="menu-choice"><a href="ai_powered_trainer.html">AI-Powered Trainer</a></li>
+        <li class="menu-choice"><a href="profile.html">Profile</a></li>
       </ul>
     </nav>
 
@@ -96,94 +97,117 @@
   </div>
 
   <!-- JavaScript -->
-  <script>
-    const dateContainer = document.getElementById('dateOptions');
-    const today = new Date();
-    let count = 0, i = 1; // 明天起
-    while (count < 6) {
-      const tempDate = new Date();
-      tempDate.setDate(today.getDate() + i);
-      if (tempDate.getDay() !== 0) {
-        const dateStr = tempDate.toISOString().split('T')[0];
-        const weekday = tempDate.toLocaleDateString('en-US', { weekday: 'long' });
-        dateContainer.innerHTML += `<label><input type="radio" name="date" value="${dateStr}">${dateStr} (${weekday})</label><br>`;
-        count++;
-      }
-      i++;
+  <!-- Only the JavaScript part changes in this version -->
+<script>
+  const userEmail = localStorage.getItem('email');
+  const dateContainer = document.getElementById('dateOptions');
+  const today = new Date();
+  let count = 0, i = 1;
+  while (count < 6) {
+    const tempDate = new Date();
+    tempDate.setDate(today.getDate() + i);
+    if (tempDate.getDay() !== 0) {
+      const dateStr = tempDate.toISOString().split('T')[0];
+      const weekday = tempDate.toLocaleDateString('en-US', { weekday: 'long' });
+      dateContainer.innerHTML += `<label><input type="radio" name="date" value="${dateStr}">${dateStr} (${weekday})</label>`;
+      count++;
     }
+    i++;
+  }
 
-    let bookings = [];
+  let bookings = [];
+  let currentPage = 1;
+  const rowsPerPage = 4;
+
+  function renderTable() {
     const tableBody = document.getElementById('bookingTableBody');
-    const rowsPerPage = 4;
-    let currentPage = 1;
+    tableBody.innerHTML = "";
+    const start = (currentPage - 1) * rowsPerPage;
+    const end = start + rowsPerPage;
+    const pageData = bookings.slice(start, end);
 
-    function renderTable() {
-      tableBody.innerHTML = '';
-      const start = (currentPage - 1) * rowsPerPage;
-      const end = Math.min(start + rowsPerPage, bookings.length);
-      for (let i = start; i < end; i++) {
-        const b = bookings[i];
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${b.ref}</td>
-          <td>${b.user}</td>
-          <td>${b.date}</td>
-          <td>${b.time}</td>
-          <td>${b.bookedOn}</td>
-          <td><span class="delete-link" onclick="deleteRow(this, ${i})">Delete</span></td>
-        `;
-        tableBody.appendChild(row);
-      }
-      document.getElementById("pageInfo").innerText = `Page ${currentPage} of ${Math.max(1, Math.ceil(bookings.length / rowsPerPage))}`;
+    pageData.forEach(b => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${b.reference}</td>
+        <td>${b.email}</td>
+        <td>${b.date}</td>
+        <td>${b.time}</td>
+        <td>${b.booked_on}</td>
+        <td><span class="delete-link" onclick="confirmDelete(this)">🗑️</span></td>
+      `;
+      tableBody.appendChild(row);
+    });
+
+    document.getElementById('pageInfo').innerText = `Page ${currentPage}`;
+  }
+
+  function prevPage() {
+    if (currentPage > 1) {
+      currentPage--;
+      renderTable();
+    }
+  }
+
+  function nextPage() {
+    const totalPages = Math.ceil(bookings.length / rowsPerPage);
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderTable();
+    }
+  }
+
+  async function loadBookings() {
+    if (!userEmail) return;
+    const res = await fetch(`http://localhost:3000/bookings/${userEmail}`);
+    const data = await res.json();
+    bookings = data;
+    renderTable();
+  }
+
+  async function submitBooking() {
+    const selectedDate = document.querySelector('input[name="date"]:checked');
+    const selectedTime = document.querySelector('input[name="time"]:checked');
+    if (!selectedDate || !selectedTime) {
+      alert("Please select both a date and a time.");
+      return;
     }
 
-    function submitBooking() {
-      const selectedDate = document.querySelector('input[name="date"]:checked');
-      const selectedTime = document.querySelector('input[name="time"]:checked');
-      if (!selectedDate || !selectedTime) {
-        alert("Please select both a date and a time.");
-        return;
-      }
+    const date = selectedDate.value;
+    const time = selectedTime.value;
+    const now = new Date();
+    const bookedOn = new Date(now.getTime() + 8 * 60 * 60 * 1000).toISOString().slice(0, 19).replace('T', ' ');
+    const reference = `GYM${now.getFullYear()}${Math.floor(Math.random() * 1000000).toString().padStart(6, '0')}`;
 
-      const user = "Xirui Huang";
-      const date = selectedDate.value;
-      const time = selectedTime.value;
-      const now = new Date();
-      const utc8 = new Date(now.getTime() + 8 * 60 * 60 * 1000);
-      const bookedOn = utc8.toISOString().slice(0, 19).replace('T', ' ');
-      const ref = `GYM${new Date().getFullYear()}${Math.floor(Math.random() * 1000000).toString().padStart(6, '0')}`;
+    const booking = { email: userEmail, date, time, bookedOn, reference };
 
-      bookings.push({ ref, user, date, time, bookedOn });
+    const res = await fetch('http://localhost:3000/bookings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(booking)
+    });
+
+    if (res.ok) {
+      bookings.push(booking);
       currentPage = Math.ceil(bookings.length / rowsPerPage);
       renderTable();
       document.getElementById("bookingForm").reset();
+    } else {
+      alert("Booking failed. Try again.");
     }
+  }
 
-    function deleteRow(el, index) {
-      if (confirm("Are you sure you want to delete this booking?")) {
-        bookings.splice(index, 1);
-        if ((currentPage - 1) * rowsPerPage >= bookings.length) {
-          currentPage = Math.max(1, currentPage - 1);
-        }
-        renderTable();
-      }
+  function confirmDelete(el) {
+    if (confirm("Are you sure you want to delete this booking?")) {
+      const row = el.closest('tr');
+      const ref = row.children[0].textContent;
+      bookings = bookings.filter(b => b.reference !== ref);
+      renderTable();
     }
+  }
 
-    function prevPage() {
-      if (currentPage > 1) {
-        currentPage--;
-        renderTable();
-      }
-    }
-
-    function nextPage() {
-      if (currentPage < Math.ceil(bookings.length / rowsPerPage)) {
-        currentPage++;
-        renderTable();
-      }
-    }
-
-    renderTable();
-  </script>
+  // Initial load
+  window.onload = loadBookings;
+</script>
 </body>
 </html>

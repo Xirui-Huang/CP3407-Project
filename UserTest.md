@@ -61,11 +61,40 @@ Ensure form fields are restricted to valid, meaningful inputs
 ### Actual Result: ❌ Fail
 
 ### Issue Analysis: 
-Fields are implemented as free text inputs, allowing incorrect data submission
+- Fields are implemented as free text inputs, allowing incorrect data submission
 
 ### Suggested Solution:
 
 - Replace free text fields with <select> or radio options
+
 - Implement backend validation for accepted values (e.g., gender should be Male/Female/Other)
 
+## User Test Case 4: Booking Feedback Test
+### Test Objective: 
+Verify that users receive feedback after booking a session
+
+### Test Steps:
+
+1. Log in with a valid account
+
+2. Click on a "Book" button for a session
+
+3. Observe whether confirmation is shown (e.g., popup or status update)
+
+### Expected Result: 
+System should provide confirmation such as “Booking Successful”
+
+### Actual Result: ❌ Fail
+
+### Issue Analysis:
+
+- No frontend message or alert shown
+
+- Backend may not return confirmation response
+
+### Suggested Solution:
+
+- Add alert("Booking successful!") or visual feedback on frontend
+
+- Ensure backend returns a success response that frontend can detect
   

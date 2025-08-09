@@ -25,3 +25,47 @@ Background images and logos failed to load, possibly due to incorrect file paths
 - Ensure all image files are correctly uploaded and accessible on the server
 
 - Use browser developer tools to debug missing resources
+
+## User Test Case 2: UI Form Complexity Test
+### Test Objective: 
+Ensure that the user registration or profile form is clean and concise
+
+### Test Steps:
+
+1. Open the registration page
+
+2. Observe the number of form fields and check for unnecessary ones
+
+3. Attempt to fill in the form
+
+### Expected Result: 
+The form should only include essential fields like name, phone, email, and password
+
+### Actual Result: ✔ Pass
+
+### Remarks: 
+Non-essential fields like nickname and address were removed. The form is now simplified.
+
+## User Test Case 3: UI Input Validity Control Test
+### Test Objective: 
+Ensure form fields are restricted to valid, meaningful inputs
+
+### Test Steps:
+
+1. Enter invalid or nonsensical data (e.g., "123" or "ABC") into fields like gender or goals
+
+2. Submit the form
+
+3. Expected Result: Input should be restricted using dropdowns or radio buttons to enforce proper format
+
+### Actual Result: ❌ Fail
+
+### Issue Analysis: 
+Fields are implemented as free text inputs, allowing incorrect data submission
+
+### Suggested Solution:
+
+- Replace free text fields with <select> or radio options
+- Implement backend validation for accepted values (e.g., gender should be Male/Female/Other)
+
+  

@@ -6,10 +6,10 @@
 ## User Story
 | Title                           | Priority | Est.Days      | Describes                                |
 | ------------------------------- | :------: | :-----------: | ---------------------------------------- |
-| Prototype                       | High     |    3 days     | As a customer, I want have a briefly look about what the website will look like, so that I can make sure the product is what I want. |
+| Preview Website Layout          | High     |    3 days     | As a customer, I want have a briefly look about what the website will look like, so that I can make sure the product is what I want. |
 | Membership Process Digitization | High     |    3 days     | As a student, I want the process of register can be more convenient compare to the painful paper-based register, so that i can register it online with a few clicks. |
 | Check Before Booking            | High     |     3 days    |  As a user, I want to know which time slot already been booked and how many people in there before booking, so that i can see which time slot is more suitable to my schedule.  |
-| Training Direction              | High     |     3 days    |  As a student, I want to have some video to teach me how to exercise correctly, so that i can avoid the injuries caused by the incorrect movements.   |
+| Demonstration Video              | High     |     3 days    |  As a student, I want to have some video to teach me how to exercise correctly, so that i can avoid the injuries caused by the incorrect movements.   |
 
 ## Backlog – User Stories/Tasks
 
@@ -28,9 +28,9 @@
 
 | Task                                      | Developer      | Start Date    |
 | ----------------------------------------- | -------------- | ------------- |
-|  Basic Architectural                      |  Hewei Li      | June 4, 2025  |
-|  Improve the Prototype                    |  Juelai Li     | June 11, 2025 |
-|  Connect with Database                    |  Letian You    | June 11, 2025 |
+| Basic Architectural                       |  Hewei Li      | June 4, 2025  |
+| Improve the Prototype                     |  Juelai Li     | June 11, 2025 |
+| Connect with Database                     |  Letian You    | June 11, 2025 |
 | Ensure the Data are Suitable for Database |  Xirui Huang   | June 13, 2025 |
 | Real Time Feedback for Time Slot          |  Letian You    | June 14, 2025 |
 | Search and Embed Videos                   |  Hewei Li      | June 5, 2025  |
@@ -40,9 +40,9 @@
 ## Completed
 | Task                                      | Developer      | Date Completed |
 | ----------------------------------------- | :------------: | :------------: |
-|  Basic Architectural                      |  Hewei Li      | June 5, 2025   |
-|  Improve the Prototype                    |  Juelai Li     | June 14, 2025  |
-|  Connect with Database                    |  Letian You    | June 14, 2025  |
+| Basic Architectural                       |  Hewei Li      | June 5, 2025   |
+| Improve the Prototype                     |  Juelai Li     | June 14, 2025  |
+| Connect with Database                     |  Letian You    | June 14, 2025  |
 | Ensure the Data are Suitable for Database |  Xirui Huang   | June 16, 2025  |
 | Design Demonstration video page           |  Xirui Huang   | June 17, 2025  |
 | Real Time Feedback for Time Slot          |  Letian You    | June 16, 2025  |

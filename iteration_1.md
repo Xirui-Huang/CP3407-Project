@@ -1,8 +1,8 @@
 # Iteration-1 Board [Week 3 - Week 6] 
 
-* Assumed Velocity: 9 days
+* Assumed Velocity: 12 days
 * Number of developers: 4
-* Total estimated amount of work: 9 days
+* Total estimated amount of work: 12 days
 ## User Story
 | Title                           | Priority | Est.Days      | Describes                                |
 | ------------------------------- | :------: | :-----------: | ---------------------------------------- |
@@ -32,12 +32,22 @@
 |  Improve the Prototype                    |  Juelai Li     | June 11, 2025 |
 |  Connect with Database                    |  Letian You    | June 11, 2025 |
 | Ensure the Data are Suitable for Database |  Xirui Huang   | June 13, 2025 |
+| Real Time Feedback for Time Slot          |  Letian You    | June 14, 2025 |
+| Search and Embed Videos                   |  Hewei Li      | June 5, 2025  |
+| Design Demonstration video page           |  Xirui Huang   | June 16, 2025 |
+| Recommended Time Slot                     |  Juelai Li     | June 14, 2025 |
 
 ## Completed
-| Task                      | Developer | Date Completed |
-| ------------------------- | :-------: | :------------: |
-|    Basic Architectural    | Hewei Li  | June 5, 2025   |
-|    Connect with Database  | Letian You| June 14, 2025  |
+| Task                                      | Developer      | Date Completed |
+| ----------------------------------------- | :------------: | :------------: |
+|  Basic Architectural                      |  Hewei Li      | June 5, 2025   |
+|  Improve the Prototype                    |  Juelai Li     | June 14, 2025  |
+|  Connect with Database                    |  Letian You    | June 14, 2025  |
+| Ensure the Data are Suitable for Database |  Xirui Huang   | June 16, 2025  |
+| Design Demonstration video page           |  Xirui Huang   | June 17, 2025  |
+| Real Time Feedback for Time Slot          |  Letian You    | June 16, 2025  |
+| Search and Embed Videos                   |  Hewei Li      | June 7, 2025  |
+| Recommended Time Slot                     |  Juelai Li     | June 15, 2025 |
 
 ### Burn Down for iteration-1 (see chapter 4):
 Update this at least once per week

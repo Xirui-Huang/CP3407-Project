@@ -52,5 +52,5 @@
 ### Burn Down for iteration-1 (see chapter 4):
 Update this at least once per week
 
-* ![image](https://github.com/user-attachments/assets/bbcd643d-c81a-4300-bf33-1aa9fa960f62)
+<img width="348" height="218" alt="image" src="https://github.com/user-attachments/assets/7477e777-27bd-4b61-8622-1b6652e5c204" />
 

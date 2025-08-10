@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking - Booking Statistics</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* 控制图表大小 */
+        #attendanceChart {
+            max-width: 350px;
+            max-height: 250px;
+            margin: auto;
+        }
+        #bookingChart {
+            max-width: 500px;
+            max-height: 300px;
+            margin: auto;
+        }
+        section {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header>
+            <h1>JCU Gym System</h1>
+            <a href="index.html">
+                <img src="image/jcu_logo.png" alt="JCU Logo">
+            </a>
+        </header>
+
+        <!-- 导航栏 -->
+        <nav class="nav_user">
+            <ul class="menu">
+                <li class="menu-choice"><a href="monitor.html">Monitor</a></li>
+                <li class="menu-choice"><a href="tracking.html">Tracking</a></li>
+                <li class="menu-choice"><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+
+        <hr class="divider">
+
+        <main>
+            <h2>Booking Attendance & Statistics</h2>
+
+            <!-- 出勤率 -->
+            <section>
+                <h3>Attendance Rate</h3>
+                <p>Default: All members attended their bookings.</p>
+                <canvas id="attendanceChart"></canvas>
+            </section>
+
+            <hr>
+
+            <!-- 统计数据 -->
+            <section>
+                <h3>Booking Statistics</h3>
+                <canvas id="bookingChart"></canvas>
+            </section>
+        </main>
+
+        <hr class="divider">
+
+        <!-- 页脚 -->
+        <footer>
+            <div class="contact_info">
+                <p>Email: <a href="mailto:jcu.edu.sg">jcu.edu.sg</a></p>
+                <p>Phone: <a href="tel:12345678">12345678</a></p>
+                <p>Fax: 4779 1244</p>
+                <p>Address: 149 Sims Drive Singapore 387380</p>
+                <p>&copy; Copyright 2022. ALL Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 访问权限
+        const role = localStorage.getItem('role');
+        if (role !== 'staff') {
+            alert("Access denied. Only staff can use this page.");
+            window.location.href = "index.html";
+        }
+
+        // 获取所有 booking 数据
+        fetch('/get_all_bookings')
+            .then(res => res.json())
+            .then(bookings => {
+                // 出勤率（默认全部出勤）
+                const totalBookings = bookings.length;
+                const attended = totalBookings;
+                const absent = 0;
+
+                new Chart(document.getElementById('attendanceChart'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Attended', 'Absent'],
+                        datasets: [{
+                            data: [attended, absent],
+                            backgroundColor: ['#4CAF50', '#F44336']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false
+                    }
+                });
+
+                // 统计每个月的预约数量
+                const monthlyCount = {};
+                bookings.forEach(b => {
+                    const month = new Date(b.booking_date).toLocaleString('default', { month: 'short' });
+                    monthlyCount[month] = (monthlyCount[month] || 0) + 1;
+                });
+
+                new Chart(document.getElementById('bookingChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: Object.keys(monthlyCount),
+                        datasets: [{
+                            label: 'Bookings per Month',
+                            data: Object.values(monthlyCount),
+                            backgroundColor: '#2196F3'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false
+                    }
+                });
+            })
+            .catch(err => {
+                console.error(err);
+                alert("Error loading booking statistics.");
+            });
+    </script>
+</body>
+</html>

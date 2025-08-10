@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Trainer</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI-Powered Trainer</h1>
+            <a href="index.html">
+                <img src="image/jcu_logo.png">
+            </a>
+        </header>
+
+        <nav class="nav_user">
+            <ul class="menu">
+                <li class="menu-choice"><a href="session_booking.html">Session Booking</a></li> 
+                <li class="menu-choice"><a href="virtual_gym_tour.html">Virtual Gym Tour</a></li>
+                <li class="menu-choice"><a href="ai_powered_trainer.html">AI-Powered Trainer</a></li>
+                <li class="menu-choice"><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+
+        <hr class="divider">
+
+        <main>
+            <h2>Get Your Personalized Workout Plan</h2>
+            <form id="planForm">
+                <label>Age: <input type="number" name="age" required></label><br><br>
+
+                <label>Gender:
+                    <select name="gender" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </label><br><br>
+
+                <!-- Fitness Goal 改为下拉选择 -->
+                <label>Fitness Goal:
+                    <select name="fitnessGoal" required>
+                        <option value="">--Select--</option>
+                        <option value="build muscle">Build Muscle</option>
+                        <option value="lose weight">Lose Weight</option>
+                        <option value="improve endurance">Improve Endurance</option>
+                        <option value="increase flexibility">Increase Flexibility</option>
+                        <option value="general fitness">General Fitness</option>
+                        <option value="rehabilitation">Rehabilitation / Recovery</option>
+                    </select>
+                </label><br><br>
+
+                <label>Experience: 
+                    <select name="experience" required>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </label><br><br>
+
+                <label>Available Training Days: <input type="number" name="availableDays" required></label><br><br>
+
+                <button type="submit">Generate Plan</button>
+            </form>
+
+            <h3>Your Workout Plan:</h3>
+            <pre id="planOutput"></pre>
+        </main>
+
+        <hr class="divider">
+
+        <footer>
+            <div class="contact_info">
+                <p>Email: <a href="mailto:jcu.edu.sg">jcu.edu.sg</a></p>
+                <p>Phone: <a href="tel:12345678">12345678</a></p>
+                <p>Fax: 4779 1244</p>
+                <p>Address: 149 Sims Drive Singapore 387380</p>
+                <p>&copy; Copyright 2022. ALL Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('planForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = Object.fromEntries(new FormData(this).entries());
+
+            const res = await fetch('/generate_plan', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            const data = await res.json();
+            document.getElementById('planOutput').textContent = data.plan || "Failed to generate plan.";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JCU Gym System</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JCU Gym System</h1>
+            <a href="index.html">
+                <img src="image/jcu_logo.png">
+            </a>
+        </header>
+
+        <nav class="nav_user">
+            <ul class="menu">
+                <li class="menu-choice"><a href="session_booking.html">Session Booking</a></li> 
+                <li class="menu-choice"><a href="virtual_gym_tour.html">Virtual Gym Tour</a></li>
+                <li class="menu-choice"><a href="ai_powered_trainer.html">AI-Powered Trainer</a></li>
+                <li class="menu-choice"><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+
+        <hr class="divider">
+
+        <main>
+            <div style="position: relative; width: 1343px; height: 768px; margin: auto;">
+                <img src="image/virtual_gym_tour.png" alt="Virtual Gym Tour" style="width: 100%; height: 100%;">
+
+                <!-- Treadmill -->
+                <button style="position:absolute; top:300px; left:50px; width:250px; height:250px; opacity:0; cursor:pointer;" 
+                        onclick="showInfo('Treadmill')"></button>
+
+                <!-- Elliptical Trainer -->
+                <button style="position:absolute; top:300px; left:320px; width:150px; height:200px; opacity:0; cursor:pointer;" 
+                        onclick="showInfo('Elliptical Trainer')"></button>
+
+                <!-- Dumbbell Rack with Dumbbells -->
+                <button style="position:absolute; top:280px; left:480px; width:220px; height:200px; opacity:0; cursor:pointer;" 
+                        onclick="showInfo('Dumbbell Rack with Dumbbells')"></button>
+
+                <!-- Yoga Mat -->
+                <button style="position:absolute; top:500px; left:450px; width:300px; height:150px; opacity:0; cursor:pointer;" 
+                        onclick="showInfo('Yoga Mat')"></button>
+
+                <!-- Aerobic Step Platform -->
+                <button style="position:absolute; top:480px; left:670px; width:150px; height:100px; opacity:0; cursor:pointer;" 
+                        onclick="showInfo('Aerobic Step Platform')"></button>
+
+                <!-- Bench Press Bench -->
+                <button style="position:absolute; top:350px; left:880px; width:350px; height:250px; opacity:0; cursor:pointer;" 
+                        onclick="showInfo('Bench Press Bench')"></button>
+            </div>
+        </main>
+        
+        <hr class="divider">
+
+        <footer>
+            <div class="contact_info">
+                <p>Email: <a href="mailto:jcu.edu.sg">jcu.edu.sg</a></p>
+                <p>Phone: <a href="tel:12345678">12345678</a></p>
+                <p>fax 4779 1244</p>
+                <p>address: 149 Sims Drive Singapore 387380</p>
+                <p>&copy; Copyright 2022. ALL Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 登录检查
+        const staffId = localStorage.getItem('name_staff_id');
+        if (!staffId) {
+            alert("Please log in first.");
+            window.location.href = "index.html";
+        }
+
+        // 器材说明
+        function showInfo(equipment) {
+            const descriptions = {
+                "Treadmill": "A treadmill is used for walking or running while staying in one place.",
+                "Elliptical Trainer": "An elliptical trainer provides a low-impact cardio workout.",
+                "Dumbbell Rack with Dumbbells": "A rack holding multiple weights for strength training.",
+                "Yoga Mat": "A cushioned mat used for yoga and floor exercises.",
+                "Aerobic Step Platform": "A platform for step aerobics exercises.",
+                "Bench Press Bench": "A bench used for weight lifting exercises."
+            };
+            alert(descriptions[equipment]);
+        }
+    </script>
+</body>
+</html>

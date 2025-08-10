@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JCU Gym System</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JCU Gym System</h1>
+            <a href="index.html">
+                <img src="image/jcu_logo.png">
+            </a>
+        </header>
+
+        <nav class="nav_user">
+            <ul class="menu">
+                <li class="menu-choice"><a href="session_booking.html">Session Booking</a></li> 
+                <li class="menu-choice"><a href="virtual_gym_tour.html">Virtual Gym Tour</a></li>
+                <li class="menu-choice"><a href="ai_powered_trainer.html">AI-Powered Trainer</a></li>
+                <li class="menu-choice"><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+
+        <hr class="divider">
+
+        <main>
+            <h2>My Profile</h2>
+            <form id="profileForm">
+                <label>Name & Staff ID:
+                    <input type="text" id="name_staff_id" name="name_staff_id" readonly>
+                </label><br><br>
+                <label>Title:
+                    <input type="text" id="title" name="title">
+                </label><br><br>
+                <label>Gender:
+                    <input type="text" id="gender" name="gender">
+                </label><br><br>
+                <label>Date of Birth:
+                    <input type="date" id="dob" name="dob">
+                </label><br><br>
+                <label>Telephone:
+                    <input type="tel" id="telephone" name="telephone">
+                </label><br><br>
+                <label>Email:
+                    <input type="email" id="email" name="email">
+                </label><br><br>
+                <label>Emergency Contact Name:
+                    <input type="text" id="emergency_name" name="emergency_name">
+                </label><br><br>
+                <label>Emergency Contact Number:
+                    <input type="tel" id="emergency_number" name="emergency_number">
+                </label><br><br>
+                <button type="submit">Save Changes</button>
+            </form>
+        </main>
+        
+        <hr class="divider">
+
+        <footer>
+            <div class="contact_info">
+                <p>Email: <a href="mailto:jcu.edu.sg">jcu.edu.sg</a></p>
+                <p>Phone: <a href="tel:12345678">12345678</a></p>
+                <p>fax 4779 1244</p>
+                <p>address: 149 Sims Drive Singapore 387380</p>
+                <p>&copy; Copyright 2022. ALL Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const staffId = localStorage.getItem('name_staff_id');
+        if (!staffId) {
+            alert("Please log in first.");
+            window.location.href = "index.html";
+        } else {
+            // 获取数据库信息
+            fetch(`/staff_search?name_staff_id=${encodeURIComponent(staffId)}`)
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('name_staff_id').value = data.name_staff_id || '';
+                    document.getElementById('title').value = data.title || '';
+                    document.getElementById('gender').value = data.gender || '';
+                    document.getElementById('dob').value = data.dob ? data.dob.split('T')[0] : '';
+                    document.getElementById('telephone').value = data.telephone || '';
+                    document.getElementById('email').value = data.email || '';
+                    document.getElementById('emergency_name').value = data.emergency_name || '';
+                    document.getElementById('emergency_number').value = data.emergency_number || '';
+                });
+        }
+
+        document.getElementById('profileForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            fetch('/update_profile', {
+                method: 'POST',
+                body: new URLSearchParams(formData)
+            })
+            .then(res => res.text())
+            .then(msg => {
+                alert(msg);
+            });
+        });
+    </script>
+</body>
+</html>

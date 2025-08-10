@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Monitor Bookings</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="monitor-body">
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>JCU Gym System</h1>
+            <a href="index.html">
+                <img src="image/jcu_logo.png" alt="JCU Logo" />
+            </a>
+        </header>
+
+        <!-- Nav -->
+        <nav class="nav_user">
+            <ul class="menu">
+                <li class="menu-choice"><a href="monitor.html">Monitor</a></li>
+                <li class="menu-choice"><a href="tracking.html">Tracking</a></li>
+                <li class="menu-choice"><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+
+        <hr class="divider" />
+
+        <!-- Main -->
+        <main class="monitor-main">
+            <section class="monitor-card">
+                <div class="monitor-header">
+                    <div class="monitor-title-wrap">
+                        <h2 class="monitor-title">Booking Monitor</h2>
+                        <p class="monitor-subtitle">Search, review, and remove bookings for a specific member.</p>
+                    </div>
+
+                    <div class="monitor-search">
+                        <label for="searchId" class="sr-only">Name & Staff ID</label>
+                        <div class="input-with-icon">
+                            <svg class="input-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M21 21l-4.3-4.3m1.1-4.3a6.8 6.8 0 11-13.6 0 6.8 6.8 0 0113.6 0z" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <input type="text" id="searchId" placeholder="Enter Name & Staff ID (e.g. JohnDoe123)" />
+                        </div>
+                        <button class="btn btn-primary" id="searchBtn" onclick="searchBookings()">
+                            <span class="btn-label">Search</span>
+                            <span class="btn-spinner" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Info banners -->
+                <div class="banner info" id="bannerInfo">
+                    Enter a member's Name & Staff ID to view bookings.
+                </div>
+                <div class="banner error" id="bannerError" hidden>
+                    Something went wrong while retrieving bookings. Please try again.
+                </div>
+                <div class="banner success" id="bannerSuccess" hidden>
+                    Booking deleted successfully.
+                </div>
+
+                <!-- Table -->
+                <div class="table-wrap">
+                    <table class="table-modern" aria-live="polite">
+                        <thead>
+                            <tr>
+                                <th>Booking Reference</th>
+                                <th>Name & Staff ID</th>
+                                <th>Booking Date</th>
+                                <th>Booking Time</th>
+                                <th>Booked On</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookingTable">
+                            <!-- Rows injected by JS -->
+                        </tbody>
+                    </table>
+
+                    <!-- Empty / Loading states -->
+                    <div class="empty-state" id="emptyState" hidden>
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <p>No bookings found for this member.</p>
+                    </div>
+
+                    <div class="loading-state" id="loadingState" hidden>
+                        <div class="spinner"></div>
+                        <p>Loading bookings…</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <hr class="divider" />
+
+        <!-- Footer -->
+        <footer>
+            <div class="contact_info">
+                <p>Email: <a href="mailto:jcu.edu.sg">jcu.edu.sg</a></p>
+                <p>Phone: <a href="tel:12345678">12345678</a></p>
+                <p>Fax: 4779 1244</p>
+                <p>Address: 149 Sims Drive Singapore 387380</p>
+                <p>&copy; Copyright 2022. ALL Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Access control (unchanged)
+        const role = localStorage.getItem('role');
+        if (role !== 'staff') {
+            alert("Access denied. Only staff can use this page.");
+            window.location.href = "index.html";
+        }
+
+        // UI refs & helpers
+        const searchBtn = document.getElementById('searchBtn');
+        const bannerInfo = document.getElementById('bannerInfo');
+        const bannerError = document.getElementById('bannerError');
+        const bannerSuccess = document.getElementById('bannerSuccess');
+        const tableBody = document.getElementById('bookingTable');
+        const emptyState = document.getElementById('emptyState');
+        const loadingState = document.getElementById('loadingState');
+
+        function setLoading(isLoading) {
+            searchBtn.disabled = isLoading;
+            searchBtn.classList.toggle('is-loading', isLoading);
+            loadingState.hidden = !isLoading;
+        }
+
+        function showBanner(el) {
+            [bannerInfo, bannerError, bannerSuccess].forEach(b => b.hidden = true);
+            if (el) el.hidden = false;
+        }
+
+        // Search bookings (endpoint & function name preserved)
+        function searchBookings() {
+            const staffId = document.getElementById('searchId').value.trim();
+            showBanner(null);
+            tableBody.innerHTML = "";
+            emptyState.hidden = true;
+
+            if (!staffId) {
+                showBanner(bannerInfo);
+                return;
+            }
+
+            setLoading(true);
+            loadingState.hidden = false;
+
+            fetch(`/get_bookings?name_staff_id=${encodeURIComponent(staffId)}`)
+                .then(res => res.json())
+                .then(bookings => {
+                    loadingState.hidden = true;
+
+                    if (!Array.isArray(bookings) || bookings.length === 0) {
+                        emptyState.hidden = false;
+                        return;
+                    }
+
+                    emptyState.hidden = true;
+
+                    const rows = bookings.map(b => {
+                        const bookedOn = b.booked_on || "";
+                        const date = b.booking_date || "";
+                        const time = b.booking_time || "";
+                        return `
+                            <tr>
+                                <td data-label="Booking Reference">${b.booking_ref}</td>
+                                <td data-label="Name & Staff ID">${b.name_staff_id}</td>
+                                <td data-label="Booking Date">${date}</td>
+                                <td data-label="Booking Time">${time}</td>
+                                <td data-label="Booked On">${bookedOn}</td>
+                                <td data-label="Delete">
+                                    <button class="btn btn-danger btn-sm" onclick="deleteBooking('${b.booking_ref}', '${staffId}')">Delete</button>
+                                </td>
+                            </tr>
+                        `;
+                    }).join("");
+                    tableBody.innerHTML = rows;
+                })
+                .catch(err => {
+                    console.error(err);
+                    showBanner(bannerError);
+                })
+                .finally(() => {
+                    setLoading(false);
+                    loadingState.hidden = true;
+                });
+        }
+
+        // Delete booking (endpoint & function name preserved)
+        function deleteBooking(bookingRef, staffId) {
+            if (!confirm("Are you sure you want to delete this booking?")) return;
+
+            fetch(`/delete_booking?booking_ref=${encodeURIComponent(bookingRef)}`, {
+                method: 'DELETE'
+            })
+            .then(res => res.text())
+            .then(msg => {
+                alert(msg);               // keep original UX
+                showBanner(bannerSuccess);
+                searchBookings();         // refresh list
+            })
+            .catch(err => {
+                console.error(err);
+                showBanner(bannerError);
+                alert("Error deleting booking.");
+            });
+        }
+
+        // Enter key triggers search
+        document.getElementById('searchId').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                searchBookings();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -34,15 +34,18 @@ Ultimately, the platform aims to increase gym participation, reduce administrati
 
 ### All User Stories
 
-1. Title: Membership Process Digitization, Priority: High, Estimate: 1 day
-2. Title: Check Before Booking, Priority: High, Estimate: 3 days
-3. Title: Equipment Status Monitoring, Priority: Medium, Estimate: 2 days
-4. Title: Fitness Plan Recommendation, Priority: Medium, Estimate: 5 days
-5. Title: Training Direction, Priority: High, Estimate: 5 days
-6. Title: Community, Priority: Low, Estimate: 4 days
-7. Title: Reward System, Priority: Medium, Estimate: 2 days
+1. Title: Preview Website Layout, Priority: High, Estimate: 3 day
+2. Title: Membership Process Digitization, Priority: High, Estimate: 3 days
+3. Title: Simplification the Booking Process, Priority: High, Estimate: 5 days
+4. Title: Check Before Booking, Priority: High, Estimate: 3 days
+5. Title: Equipment Status Monitoring, Priority: Medium, Estimate: 5 days
+6. Title: Fitness Plan Recommendation, Priority: High, Estimate: 5 days
+7. Title: Demonstration Video, Priority: High, Estimate: 3 days
+8. Title: Community, Priority: Low, Estimation: 3 days
+9. Title: Advertising, Priority: Medium, Estimation: 1 day
+10. Title: Reward System, Priority: Medium, Estimation: 2 day
 
-   Total: 22 days
+   Total: 33 days
 
 ### Project Timeline
 
@@ -58,32 +61,54 @@ Ultimately, the platform aims to increase gym participation, reduce administrati
 
 #### Deliver a functional core gym access system that enables:
 
-* Students to join online via their student ID
+* Customers to preview the website layout before committing
 
-* Real-time visibility of gym booking slots
+* Students to join online via their student ID through a digitized membership process
 
-* Guided instruction on proper exercise technique
+* Real-time visibility of available gym booking slots and current occupancy
+
+* Guided instruction on proper exercise technique through demonstration videos
 
 ### User Story
 
-| ID | Title                           | Priority | Est. Days | Notes                                |
-| -- | ------------------------------- | -------- | --------- | ------------------------------------ |
-| 1  | Membership Process Digitization | High     | 1 day     | Auto-fill user info using student ID |
-| 2  | Check Before Booking            | High     | 3 days    | View timeslots + number of bookings  |
-| 5  | Training Direction              | High     | 5 days    | Exercise guidance for safety         |
+| Title                           | Priority | Est.Days      | Describes                                |
+| ------------------------------- | :------: | :-----------: | ---------------------------------------- |
+| Preview Website Layout          | High     |    3 days     | As a customer, I want have a briefly look about what the website will look like, so that I can make sure the product is what I want. |
+| Membership Process Digitization | High     |    3 days     | As a student, I want the process of register can be more convenient compare to the painful paper-based register, so that i can register it online with a few clicks. |
+| Check Before Booking            | High     |     3 days    |  As a user, I want to know which time slot already been booked and how many people in there before booking, so that i can see which time slot is more suitable to my schedule.  |
+| Demonstration Video              | High     |     3 days    |  As a student, I want to have some video to teach me how to exercise correctly, so that i can avoid the injuries caused by the incorrect movements.   |
+
+Total: 12 days
 
 ## Iteration 2 [ Week 7 - Week 10 ]
-Goal is to have 2 iterations during a trimester of teaching.
-1. [user story title](./user_stories/user_story_01_title.md), priority XX, YY days 
-2. ...
 
-Total: YY days
+### Main Goal for Iteration-2
 
-### Not enough time/developers: 
-1. [user story title](./user_stories/user_story_01_title.md), priority XX, YY days 
-2. ...
+#### Deliver an enhanced gym management system that enables:
 
-Total: YY days
+* Students to complete bookings quickly through an auto-filled booking process
+
+* Technicians to monitor real-time equipment status for timely maintenance
+
+* Students to receive personalized fitness plan recommendations
+
+* Users to engage with a community to share experiences and receive feedback
+
+* Sponsors to display advertisements within the gym system for greater reach
+
+* Departments to implement a reward system that encourages student participation in exercise
+
+## User Story
+| Title                              | Priority | Est.Days      | Describes                                |
+| ---------------------------------- | :------: | :---------:   | ---------------------------------------- |
+| Simplification the Booking Process | High     | 5 days        | As a student, I want the website to auto fill the information that booking required, so that I do not need to fill my information to booking every time. |
+| Equipment Status Monitoring        | Medium   | 5 days        | As a fitness equipment technician, I want to know the condition of each equipment, so that I can identify which equipment needs maintenance to plan my schedule based on the type and quantity of equipment and also prepare the necessary tools in advance.  |
+| Fitness Plan Recommendation        | High     | 5 days        |  As a student, I want to receive professional advice on what kind of exercise is suitable for my situation, so that I don’t have need to worry about the injury from the incorrect use of equipment and inappropriate exercises.   |
+| Community                          | Low      | 3 days        |  As a user, I want to share my experience with others, so that I can show my outcome and receive some advises. |
+| Advertising                        | Medium   | 1 days        |  As a sponsor,I want put some advertising in the gym,so that i can got more potential customers. |
+| Reward System                      | Medium   | 2 days        |  As a related department,I want to have some reward to attract student to exercise,so that i can have more income base on the people attracted. |
+
+Total: 21 days
 
 # Actual iterations
 1. [Iteration-1](./iteration_1.md)

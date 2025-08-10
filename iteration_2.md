@@ -32,17 +32,17 @@
 
 | Task                                      | Developer      | Start Date    |
 | ----------------------------------------- | -------------- | ------------- |
-|  Learn Related Database Knowledge         |  Letian You    | June 14，2025 |
-|  Practice and Test                        |  Xirui Huang   | June 14，2025 |
-|  Modify and Combination                   |  Juelai Li     | June 14，2025 |
-|  Store equipment Status into Database     |  Letian You    | June 18，2025 |
-|  Remind for Maintenance                   |  Hewei Li      | June 16，2025 |
-|  Collect requirement                      |  Xirui Huang   | June 16，2025 |
-|  AI Support                               |  Letian You    | June 20，2025 |
-|  Design Community Page                    |  Xirui Huang   | June 18，2025 |
-|  Code Community Page                      |  Juelai Li     | June 15，2025 |
-|  Decide the Type of Reward                |  Hewei Li      | June 17，2025 |
-|  Design a Pop Up Window                   |  Juelai Li     | June 16，2025 |
+|  Learn Related Database Knowledge         |  Letian You    | July 14，2025 |
+|  Practice and Test                        |  Xirui Huang   | July 14，2025 |
+|  Modify and Combination                   |  Juelai Li     | July 14，2025 |
+|  Store equipment Status into Database     |  Letian You    | July 18，2025 |
+|  Remind for Maintenance                   |  Hewei Li      | July 16，2025 |
+|  Collect requirement                      |  Xirui Huang   | July 16，2025 |
+|  AI Support                               |  Letian You    | July 20，2025 |
+|  Design Community Page                    |  Xirui Huang   | July 18，2025 |
+|  Code Community Page                      |  Juelai Li     | July 15，2025 |
+|  Decide the Type of Reward                |  Hewei Li      | July 17，2025 |
+|  Design a Pop Up Window                   |  Juelai Li     | July 16，2025 |
 
 
 
@@ -50,17 +50,17 @@
 ## Completed
 | Task                                      | Developer      | Date Completed |
 | ----------------------------------------- | :------------: | :------------: |
-|  Learn Related Database Knowledge         |  Letian You    |  June 16，2025 |
-|  Practice and Test                        |  Xirui Huang   |  June 16，2025 |
-|  Modify and Combination                   |  Juelai Li     |  June 15，2025 |
-|  Store equipment Status into Database     |  Letian You    |  June 20，2025 |
-|  Remind for Maintenance                   |  Hewei Li      |  June 17，2025 |
-|  Collect requirement                      |  Xirui Huang   |  June 18，2025 |
-|  AI Support                               |  Letian You    |  June 24，2025 |
-|  Design Community Page                    |  Xirui Huang   |  June 19，2025 |
-|  Code Community Page                      |  Juelai Li     |  June 16，2025 |
-|  Decide the Type of Reward                |  Hewei Li      |  June 18，2025 |
-|  Design a Pop Up Window                   |  Juelai Li     |  June 17，2025 |
+|  Learn Related Database Knowledge         |  Letian You    |  July 16，2025 |
+|  Practice and Test                        |  Xirui Huang   |  July 16，2025 |
+|  Modify and Combination                   |  Juelai Li     |  July 15，2025 |
+|  Store equipment Status into Database     |  Letian You    |  July 20，2025 |
+|  Remind for Maintenance                   |  Hewei Li      |  July 17，2025 |
+|  Collect requirement                      |  Xirui Huang   |  July 18，2025 |
+|  AI Support                               |  Letian You    |  July 24，2025 |
+|  Design Community Page                    |  Xirui Huang   |  July 19，2025 |
+|  Code Community Page                      |  Juelai Li     |  July 16，2025 |
+|  Decide the Type of Reward                |  Hewei Li      |  July 18，2025 |
+|  Design a Pop Up Window                   |  Juelai Li     |  July 17，2025 |
 
 ### Burn Down for iteration-2:
 Update this at least once per week

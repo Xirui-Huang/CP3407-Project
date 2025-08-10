@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JCU Gym System - Register</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>JCU Gym System</h1>
+    </header>
+
+    <hr class="divider" width="1500" color="black" size="3">
+
+    <form id="staffForm" onsubmit="return handleSubmit(event)">
+      <main>
+        <section class="form-section">
+          <h2>GYMNASIUM MEMBERSHIP AND INDEMNITY FORM FOR STAFF</h2>
+
+          <fieldset>
+            <legend>1. MEMBERSHIP DETAILS</legend>
+            <label>Membership Expiry Date:
+              <input type="date" name="expiry_date" id="expiry_date">
+            </label><br><br>
+            <label>Title:
+              <select name="title" id="title">
+                <option value="">--Select--</option>
+                <option>Mr</option>
+                <option>Mrs</option>
+                <option>Ms</option>
+              </select>
+            </label>
+            <label>Name &amp; Staff ID:
+              <input type="text" name="name_staff_id" id="name_staff_id" style="width: 300px;">
+            </label>
+          </fieldset>
+          <br>
+
+          <fieldset>
+            <legend>2. MEMBER DETAILS</legend>
+            <label>Gender:
+              <input type="radio" name="gender" value="male"> Male
+              <input type="radio" name="gender" value="female"> Female
+            </label><br><br>
+            <label>Date Of Birth:
+              <input type="date" name="dob" id="dob">
+            </label><br><br>
+            <label>Telephone:
+              <input type="tel" name="telephone" id="telephone"> (Mobile)
+            </label><br><br>
+            <label>JCU Email:
+              <input type="email" name="email" id="email" style="width: 300px;">
+            </label><br><br>
+            <label>Emergency Contact Name:
+              <input type="text" name="emergency_name" id="emergency_name" style="width: 300px;">
+            </label><br><br>
+            <label>Emergency Contact Number:
+              <input type="tel" name="emergency_number" id="emergency_number">
+            </label><br><br>
+            <label>Password:
+              <input type="password" name="password" id="password" style="width: 300px;">
+            </label><br><br>
+          </fieldset>
+          <br>
+
+          <fieldset>
+            <legend>3. MEMBER’S DECLARATION</legend>
+            <strong>Acknowledgement of Risks, Injury & Obligations</strong>
+            <ol>
+              <li>
+                I hereby acknowledge and am fully aware of the possible risks involved in the use of the
+                facilities or premises of the Gymnasium.
+              </li>
+            </ol>
+          </fieldset>
+
+          <br>
+          <button type="submit">Submit</button>
+        </section>
+      </main>
+    </form>
+
+    <hr class="divider" width="1500" color="black" size="3">
+
+    <footer>
+      <div class="contact_info">
+        <p>Email: <a href="mailto:jcu.edu.sg">jcu.edu.sg</a></p>
+        <p>Phone: <a href="tel:12345678">12345678</a></p>
+        <p>Fax: 4779 1244</p>
+        <p>Address: 149 Sims Drive Singapore 387380</p>
+        <p>&copy; Copyright 2022. ALL Rights Reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    function formatDate(dateStr) {
+      const d = new Date(dateStr);
+      const year = d.getFullYear();
+      const month = String(d.getMonth() + 1).padStart(2, '0');
+      const day = String(d.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    function validateForm() {
+      const requiredFields = [
+        'expiry_date', 'title', 'name_staff_id',
+        'dob', 'telephone', 'email',
+        'emergency_name', 'emergency_number', 'password'
+      ];
+      for (let field of requiredFields) {
+        if (!document.getElementById(field).value.trim()) {
+          alert("Please fill in all fields before submitting.");
+          return false;
+        }
+      }
+      if (!document.querySelector('input[name="gender"]:checked')) {
+        alert("Please select gender.");
+        return false;
+      }
+      return true;
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      if (!validateForm()) return;
+
+      const formData = new FormData(document.getElementById('staffForm'));
+      const data = new URLSearchParams(formData);
+
+      fetch('/register_staff', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: data.toString()
+      })
+        .then(res => res.text())
+        .then(response => {
+          alert("Registration successful!");
+          const name_staff_id = document.getElementById('name_staff_id').value.trim();
+          localStorage.setItem('name_staff_id', name_staff_id); // 存登录状态
+          window.location.href = 'session_booking.html';
+        })
+        .catch(err => {
+          console.error(err);
+          alert("An error occurred during registration.");
+        });
+
+      return false;
+    }
+  </script>
+</body>
+</html>

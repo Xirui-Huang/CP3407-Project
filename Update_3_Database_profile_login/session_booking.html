@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JCU Gym System</title>
+  <link rel="stylesheet" href="css/booking_styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>JCU Gym System</h1>
+      <a href="index.html">
+        <img src="image/jcu_logo.png" alt="JCU Logo"/>
+      </a>
+    </header>
+
+    <nav class="nav_user">
+      <ul class="menu">
+        <li class="menu-choice"><a href="session_booking.html">Session Booking</a></li>
+        <li class="menu-choice"><a href="virtual_gym_tour.html">Virtual Gym Tour</a></li>
+        <li class="menu-choice"><a href="ai_powered_trainer.html">AI-Powered Trainer</a></li>
+        <li class="menu-choice"><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+
+    <hr class="divider" />
+
+    <main>
+      <section>
+        <h2>My Previous Bookings</h2>
+        <table border="1" width="100%" cellpadding="10" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Booking Reference</th>
+              <th>User Name</th>
+              <th>Booking Date</th>
+              <th>Booking Time</th>
+              <th>Booked On</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="bookingTableBody"></tbody>
+        </table>
+        <div class="pagination">
+          <button onclick="prevPage()">Back</button>
+          <span id="pageInfo">Page 1</span>
+          <button onclick="nextPage()">Next</button>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <section>
+        <h2>Booking Details</h2>
+        <form id="bookingForm">
+          <div class="booking-flex">
+            <div class="date-column">
+              <h3>Pick a Date:</h3>
+              <div id="dateOptions"></div>
+            </div>
+            <div class="time-column">
+              <h3>Pick Timing:</h3>
+              <div id="timeOptions">
+                <label><input type="radio" name="time" value="09:00:00 - 11:00:00">09:00:00 - 11:00:00</label><br>
+                <label><input type="radio" name="time" value="10:00:00 - 12:00:00">10:00:00 - 12:00:00</label><br>
+                <label><input type="radio" name="time" value="11:00:00 - 13:00:00">11:00:00 - 13:00:00</label><br>
+                <label><input type="radio" name="time" value="12:00:00 - 14:00:00">12:00:00 - 14:00:00</label><br>
+                <label><input type="radio" name="time" value="13:00:00 - 15:00:00">13:00:00 - 15:00:00</label><br>
+                <label><input type="radio" name="time" value="14:00:00 - 16:00:00">14:00:00 - 16:00:00</label><br>
+                <label><input type="radio" name="time" value="15:00:00 - 17:00:00">15:00:00 - 17:00:00</label><br>
+                <label><input type="radio" name="time" value="16:00:00 - 18:00:00">16:00:00 - 18:00:00</label><br>
+                <label><input type="radio" name="time" value="17:00:00 - 19:00:00">17:00:00 - 19:00:00</label><br>
+              </div>
+            </div>
+          </div>
+          <br>
+          <button type="button" onclick="submitBooking()">Submit Booking</button>
+        </form>
+      </section>
+    </main>
+
+    <hr class="divider" />
+
+    <footer>
+      <div class="contact_info">
+        <p>Email: <a href="mailto:jcu.edu.sg">jcu.edu.sg</a></p>
+        <p>Phone: <a href="tel:12345678">12345678</a></p>
+        <p>fax 4779 1244</p>
+        <p>address: 149 Sims Drive Singapore 387380</p>
+        <p>&copy; Copyright 2022. ALL Rights Reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // 登录状态检查
+    const staffId = localStorage.getItem('name_staff_id');
+    if (!staffId) {
+        alert("Please log in first.");
+        window.location.href = "index.html";
+    }
+
+    const dateContainer = document.getElementById('dateOptions');
+    const today = new Date();
+    let count = 0, i = 1;
+    while (count < 6) {
+      const tempDate = new Date();
+      tempDate.setDate(today.getDate() + i);
+      if (tempDate.getDay() !== 0) {
+        const dateStr = tempDate.toISOString().split('T')[0];
+        const weekday = tempDate.toLocaleDateString('en-US', { weekday: 'long' });
+        dateContainer.innerHTML += `<label><input type="radio" name="date" value="${dateStr}">${dateStr} (${weekday})</label><br>`;
+        count++;
+      }
+      i++;
+    }
+
+    let bookings = [];
+    const tableBody = document.getElementById('bookingTableBody');
+    const rowsPerPage = 4;
+    let currentPage = 1;
+
+    function renderTable() {
+      tableBody.innerHTML = '';
+      const start = (currentPage - 1) * rowsPerPage;
+      const end = Math.min(start + rowsPerPage, bookings.length);
+      for (let i = start; i < end; i++) {
+        const b = bookings[i];
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${b.ref}</td>
+          <td>${b.user}</td>
+          <td>${b.date}</td>
+          <td>${b.time}</td>
+          <td>${b.bookedOn}</td>
+          <td><span class="delete-link" onclick="deleteRow(this, ${i})">Delete</span></td>
+        `;
+        tableBody.appendChild(row);
+      }
+      document.getElementById("pageInfo").innerText = `Page ${currentPage} of ${Math.max(1, Math.ceil(bookings.length / rowsPerPage))}`;
+    }
+
+    function submitBooking() {
+      const selectedDate = document.querySelector('input[name="date"]:checked');
+      const selectedTime = document.querySelector('input[name="time"]:checked');
+      if (!selectedDate || !selectedTime) {
+        alert("Please select both a date and a time.");
+        return;
+      }
+
+      const user = staffId;
+      const date = selectedDate.value;
+      const time = selectedTime.value;
+      const now = new Date();
+      const utc8 = new Date(now.getTime() + 8 * 60 * 60 * 1000);
+      const bookedOn = utc8.toISOString().slice(0, 19).replace('T', ' ');
+      const ref = `GYM${new Date().getFullYear()}${Math.floor(Math.random() * 1000000).toString().padStart(6, '0')}`;
+
+      bookings.push({ ref, user, date, time, bookedOn });
+      currentPage = Math.ceil(bookings.length / rowsPerPage);
+      renderTable();
+      document.getElementById("bookingForm").reset();
+    }
+
+    function deleteRow(el, index) {
+      if (confirm("Are you sure you want to delete this booking?")) {
+        bookings.splice(index, 1);
+        if ((currentPage - 1) * rowsPerPage >= bookings.length) {
+          currentPage = Math.max(1, currentPage - 1);
+        }
+        renderTable();
+      }
+    }
+
+    function prevPage() {
+      if (currentPage > 1) {
+        currentPage--;
+        renderTable();
+      }
+    }
+
+    function nextPage() {
+      if (currentPage < Math.ceil(bookings.length / rowsPerPage)) {
+        currentPage++;
+        renderTable();
+      }
+    }
+
+    renderTable();
+  </script>
+</body>
+</html>

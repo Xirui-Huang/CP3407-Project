@@ -28,26 +28,26 @@
 
 | Task                                      | Developer      | Start Date    |
 | ----------------------------------------- | -------------- | ------------- |
-| Basic Architectural                       |  Hewei Li      |  june/04/2025 |
-| Improve the Prototype                     |  Juelai Li     |  june/06/2025 |
-| Connect with Database                     |  Letian You    |  june/09/2025 |
-| Ensure the Data are Suitable for Database |  Xirui Huang   |  june/09/2025 |
-| Real Time Feedback for Time Slot          |  Letian You    |  june/14/2025 |
-| Search and Embed Videos                   |  Hewei Li      |  june/17/2025 |
-| Design Demonstration video page           |  Xirui Huang   |  july/07/2025 |
-| Recommended Time Slot                     |  Juelai Li     |  july/09/2025 |
+| Basic Architectural                       |  Hewei Li      |  June/04/2025 |
+| Improve the Prototype                     |  Juelai Li     |  June/06/2025 |
+| Connect with Database                     |  Letian You    |  June/09/2025 |
+| Ensure the Data are Suitable for Database |  Xirui Huang   |  June/09/2025 |
+| Real Time Feedback for Time Slot          |  Letian You    |  June/14/2025 |
+| Search and Embed Videos                   |  Hewei Li      |  June/17/2025 |
+| Design Demonstration video page           |  Xirui Huang   |  July/07/2025 |
+| Recommended Time Slot                     |  Juelai Li     |  July/09/2025 |
 
 ## Completed
 | Task                                      | Developer      | Date Completed |
 | ----------------------------------------- | :------------: | :------------: |
-| Basic Architectural                       |  Hewei Li      |  june/06/2025  |
-| Improve the Prototype                     |  Juelai Li     |  june/09/2025  |
-| Connect with Database                     |  Letian You    |  june/11/2025  |
-| Ensure the Data are Suitable for Database |  Xirui Huang   |  june/11/2025  |
-| Design Demonstration video page           |  Xirui Huang   |  june/17/2025  |
-| Real Time Feedback for Time Slot          |  Letian You    |  june/19/2025  |
-| Search and Embed Videos                   |  Hewei Li      |  july/09/2025  |
-| Recommended Time Slot                     |  Juelai Li     |  july/11/2025  |
+| Basic Architectural                       |  Hewei Li      |  June/06/2025  |
+| Improve the Prototype                     |  Juelai Li     |  June/09/2025  |
+| Connect with Database                     |  Letian You    |  June/11/2025  |
+| Ensure the Data are Suitable for Database |  Xirui Huang   |  June/11/2025  |
+| Design Demonstration video page           |  Xirui Huang   |  June/17/2025  |
+| Real Time Feedback for Time Slot          |  Letian You    |  June/19/2025  |
+| Search and Embed Videos                   |  Hewei Li      |  July/09/2025  |
+| Recommended Time Slot                     |  Juelai Li     |  July/11/2025  |
 
 ### Burn Down for iteration-1 (see chapter 4):
 Update this at least once per week

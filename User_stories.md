@@ -1,18 +1,18 @@
-## **1. Title: Prototype** 
+## **1. Title: Preview Website Layout** 
 <h3>Priority: High</h3>
 <h3>Estimate: 3 days</h3>
 <h3>Description:</h3> As a customer,I want have a briefly look about what the website will look like,so that I can make sure the product is what I want.
 
 
-## **2. Title: Database**
-<h3>Priority: High</h3>
-<h3>Estimate: 5 days</h3>
-<h3>Description:</h3> As a student,I want the website to keep my information,so that I do not need to fill my information for login and booking every time.
-
-## **3. Title: Membership Process Digitization**
+## **2. Title: Membership Process Digitization**
 <h3>Priority: High</h3>
 <h3>Estimation: 3 day</h3>
 <h3>Describe:</h3> As a student,I want the process of register can be more convenient compare to the painful paper-based register,so that i can register it online with a few clicks.
+
+## **3. Title: Simplification the Booking Process**
+<h3>Priority: High</h3>
+<h3>Estimation: 5 day</h3>
+<h3>Describe:</h3> As a student,I want the website to auto fill the information that booking required,so that I do not need to fill my information to booking every time.
 
 ## **4. Title: Check Before Booking**
 <h3>Priority: High</h3>
@@ -48,3 +48,4 @@
 <h3>Priority: Medium</h3>
 <h3>Estimation: 1 days</h3>
 <h3>Describe:</h3> As a related department,I want to have some reward to attract student to exercise,so that i can have more income base on the people attracted. 
+

@@ -32,13 +32,20 @@
 
 | Task                                      | Developer      | Start Date    |
 | ----------------------------------------- | -------------- | ------------- |
-|                                           |                |               |
-|                                           |                |               |
-|                                           |                |               |
-|                                           |                |               |
-|                                           |                |               |
-|                                           |                |               |
-|                                           |                |               |
+|  Learn Related Database Knowledge         |  Letian You    |               |
+|  Practice and Test                        |  Xirui Huang   |               |
+|  Modify and Combination                   |  Juelai Li     |               |
+|  Store equipment Status into Database     |  Letian You    |               |
+|  Remind for Maintenance                   |  Hewei Li      |               |
+|  Collect requirement                      |  Xirui Huang   |               |
+|  AI Support                               |  Letian You    |               |
+|  Design Community Page                    |  Xirui Huang   |               |
+|  Code Community Page                      |  Juelai Li     |               |
+|  Decide the Type of Reward                |  Hewei Li      |               |
+|  Design a Pop Up Window                   |  Juelai Li     |               |
+
+
+
 
 ## Completed
 | Task                                      | Developer      | Date Completed |

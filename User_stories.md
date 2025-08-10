@@ -46,6 +46,7 @@
 
 ## **10. Title: Reward System**
 <h3>Priority: Medium</h3>
-<h3>Estimation: 1 days</h3>
+<h3>Estimation: 2 days</h3>
 <h3>Describe:</h3> As a related department,I want to have some reward to attract student to exercise,so that i can have more income base on the people attracted. 
+
 

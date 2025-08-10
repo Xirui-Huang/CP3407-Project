@@ -4,12 +4,12 @@
 * Number of developers: 4
 * Total estimated amount of work:  days
 ## User Story
-| Title                           | Priority | Est.Days      | Describes                                |
-| ------------------------------- | :------: | :-----------: | ---------------------------------------- |
-|                                 |          |       days    |                                          |
-|                                 |          |       days    |                                          |
-|                                 |          |       days    |                                          |
-|                                 |          |       days    |                                          |
+| Title                              | Priority | Est.Days      | Describes                                |
+| simplification the Booking Process | :High--: | :---5 days:   | ---------------------------------------- |
+|                                    |          |       days    |                                          |
+|                                    |          |       days    |                                          |
+|                                    |          |       days    |                                          |
+|                                    |          |       days    |                                          |
 
 ## Backlog – User Stories/Tasks
 

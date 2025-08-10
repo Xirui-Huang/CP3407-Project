@@ -64,3 +64,8 @@
 
 ### Burn Down for iteration-2:
 Update this at least once per week
+
+<img alt="image" src="https://github.com/user-attachments/assets/4d694c3d-48c2-4ead-b4aa-0cc680eb84c0" />
+
+<img alt="image" src="https://github.com/user-attachments/assets/0a26e6c8-3964-4cbc-b019-89984f4a71e9" />
+

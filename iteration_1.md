@@ -28,8 +28,8 @@
 
 | Task                                      | Developer      | Start Date    |
 | ----------------------------------------- | -------------- | ------------- |
-| Basic Architectural                       |  Hewei Li      |   |
-| Improve the Prototype                     |  Juelai Li     |  |
+| Basic Architectural                       |  Hewei Li      |  june 4 |
+| Improve the Prototype                     |  Juelai Li     |  june 6 |
 | Connect with Database                     |  Letian You    |  |
 | Ensure the Data are Suitable for Database |  Xirui Huang   |  |
 | Real Time Feedback for Time Slot          |  Letian You    |  |

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Tracking - Booking Statistics</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Keep original inline sizing but minimal — detailed styles added in styles.css */
+        #attendanceChart, #bookingChart { width: 100%; height: 100%; }
+    </style>
+</head>
+<body class="tracking-body">
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>JCU Gym System</h1>
+            <a href="index.html">
+                <img src="image/jcu_logo.png" alt="JCU Logo">
+            </a>
+        </header>
+
+        <!-- Nav -->
+        <nav class="nav_user">
+            <ul class="menu">
+                <li class="menu-choice"><a href="monitor.html">Monitor</a></li>
+                <li class="menu-choice"><a href="tracking.html">Tracking</a></li>
+                <li class="menu-choice"><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+
+        <hr class="divider">
+
+        <!-- Main -->
+        <main class="tracking-main">
+            <!-- Left: charts -->
+            <section class="tracking-charts">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Attendance Rate</h2>
+                        <p class="card-subtitle">Default assumption: all members attended their bookings.</p>
+                    </div>
+                    <div class="chart-box small">
+                        <canvas id="attendanceChart" aria-label="Attendance rate doughnut chart"></canvas>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Monthly Booking Statistics</h2>
+                        <p class="card-subtitle">Count of bookings grouped by month.</p>
+                    </div>
+                    <div class="chart-box">
+                        <canvas id="bookingChart" aria-label="Monthly bookings bar chart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right: info panel -->
+            <aside class="tracking-aside">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Data Status</h3>
+                        <p class="card-subtitle">Live data from database.</p>
+                    </div>
+                    <ul class="meta-list">
+                        <li><span>Total bookings:</span> <strong id="metaTotal">-</strong></li>
+                        <li><span>Attended:</span> <strong id="metaAttended">-</strong></li>
+                        <li><span>Absent:</span> <strong id="metaAbsent">-</strong></li>
+                        <li><span>Last updated:</span> <strong id="metaUpdated">-</strong></li>
+                    </ul>
+
+                    <div class="banner info" id="bannerInfo">Fetching statistics…</div>
+                    <div class="banner error" id="bannerError" hidden>Failed to load statistics. Please try again.</div>
+                </div>
+
+                <div class="card tips">
+                    <div class="card-header">
+                        <h3 class="card-title">Tips</h3>
+                    </div>
+                    <ul>
+                        <li>Use “Monitor” to find and delete specific bookings.</li>
+                        <li>Check peak months to plan staff allocation.</li>
+                        <li>Consistent attendance may indicate mature scheduling.</li>
+                    </ul>
+                </div>
+            </aside>
+        </main>
+
+        <hr class="divider">
+
+        <!-- Footer -->
+        <footer>
+            <div class="contact_info">
+                <p>Email: <a href="mailto:jcu.edu.sg">jcu.edu.sg</a></p>
+                <p>Phone: <a href="tel:12345678">12345678</a></p>
+                <p>Fax: 4779 1244</p>
+                <p>Address: 149 Sims Drive Singapore 387380</p>
+                <p>&copy; Copyright 2022. ALL Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Access control
+        const role = localStorage.getItem('role');
+        if (role !== 'staff') {
+            alert("Access denied. Only staff can use this page.");
+            window.location.href = "index.html";
+        }
+
+        // UI refs
+        const bannerInfo = document.getElementById('bannerInfo');
+        const bannerError = document.getElementById('bannerError');
+        const metaTotal = document.getElementById('metaTotal');
+        const metaAttended = document.getElementById('metaAttended');
+        const metaAbsent = document.getElementById('metaAbsent');
+        const metaUpdated = document.getElementById('metaUpdated');
+
+        function showBanner(el) {
+            bannerInfo.hidden = true;
+            bannerError.hidden = true;
+            if (el) el.hidden = false;
+        }
+
+        // Charts
+        let attendanceChart, bookingChart;
+
+        function buildAttendanceChart(attended, absent) {
+            const ctx = document.getElementById('attendanceChart').getContext('2d');
+            if (attendanceChart) attendanceChart.destroy();
+            attendanceChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Attended', 'Absent'],
+                    datasets: [{
+                        data: [attended, absent],
+                        backgroundColor: ['#4CAF50', '#F44336']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+        }
+
+        function buildMonthlyChart(monthlyLabels, monthlyValues) {
+            const ctx = document.getElementById('bookingChart').getContext('2d');
+            if (bookingChart) bookingChart.destroy();
+            bookingChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: monthlyLabels,
+                    datasets: [{
+                        label: 'Bookings per Month',
+                        data: monthlyValues,
+                        backgroundColor: '#2196F3'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true, ticks: { precision: 0 } }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { mode: 'index', intersect: false }
+                    }
+                }
+            });
+        }
+
+        // Fetch and render
+        function loadStats() {
+            showBanner(bannerInfo);
+
+            fetch('/get_all_bookings')
+                .then(res => res.json())
+                .then(bookings => {
+                    // Attendance (default all attended)
+                    const total = bookings.length;
+                    const attended = total;
+                    const absent = 0;
+
+                    // Monthly aggregation
+                    const monthlyCount = {};
+                    bookings.forEach(b => {
+                        const dateStr = b.booking_date;
+                        const d = dateStr ? new Date(dateStr) : null;
+                        const label = d ? d.toLocaleString('default', { month: 'short' }) : 'N/A';
+                        monthlyCount[label] = (monthlyCount[label] || 0) + 1;
+                    });
+
+                    // Sort months by calendar order (Jan..Dec). Keep 'N/A' at end if exists.
+                    const monthOrder = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                    const labels = Object.keys(monthlyCount).sort((a,b) => {
+                        const ia = monthOrder.indexOf(a);
+                        const ib = monthOrder.indexOf(b);
+                        if (ia === -1 && ib === -1) return a.localeCompare(b);
+                        if (ia === -1) return 1;
+                        if (ib === -1) return -1;
+                        return ia - ib;
+                    });
+                    const values = labels.map(m => monthlyCount[m]);
+
+                    // Render charts
+                    buildAttendanceChart(attended, absent);
+                    buildMonthlyChart(labels, values);
+
+                    // Meta
+                    metaTotal.textContent = String(total);
+                    metaAttended.textContent = String(attended);
+                    metaAbsent.textContent = String(absent);
+                    metaUpdated.textContent = new Date().toLocaleString();
+
+                    showBanner(null);
+                })
+                .catch(err => {
+                    console.error(err);
+                    showBanner(bannerError);
+                });
+        }
+
+        loadStats();
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JCU Gym System - Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="auth-body">
+    <div class="container auth-container">
+        <header class="auth-header">
+            <div class="brand">
+                <img src="image/jcu_logo.png" alt="JCU Logo" class="brand-logo">
+                <div class="brand-text">
+                    <h1 class="brand-title">JCU Gym System</h1>
+                    <p class="brand-subtitle">Welcome back — please sign in</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- 登录卡片 -->
+        <main class="auth-main">
+            <section class="auth-card">
+                <h2 class="auth-title">Staff/Student Login</h2>
+                <form id="loginForm" onsubmit="return handleLogin(event)">
+                    <label class="auth-field">
+                        <span>Name &amp; Staff ID</span>
+                        <input type="text" id="name_staff_id" name="name_staff_id" required placeholder="e.g. JohnDoe123">
+                    </label>
+
+                    <label class="auth-field">
+                        <span>Password</span>
+                        <input type="password" id="password" name="password" required placeholder="Enter your password">
+                    </label>
+
+                    <div class="auth-actions">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="button" class="btn btn-ghost" onclick="window.location.href='online_registration.html'">Register</button>
+                    </div>
+
+                    <p class="auth-hint">Tip: Students will be redirected to <em>Session Booking</em>. Staff will be redirected to <em>Monitor</em>.</p>
+                </form>
+            </section>
+        </main>
+
+        <footer class="auth-footer">
+            <div class="contact_info">
+                <p>Email: <a href="mailto:jcu.edu.sg">jcu.edu.sg</a></p>
+                <p>Phone: <a href="tel:12345678">12345678</a></p>
+                <p>Fax: 4779 1244</p>
+                <p>Address: 149 Sims Drive Singapore 387380</p>
+                <p>&copy; Copyright 2022. ALL Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const name_staff_id = document.getElementById('name_staff_id').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            if (!name_staff_id || !password) {
+                alert("Please enter both Staff ID and Password.");
+                return;
+            }
+
+            fetch('/login_staff', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ name_staff_id, password }).toString()
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    localStorage.setItem('name_staff_id', name_staff_id);
+                    localStorage.setItem('role', data.role);
+                    if (data.role === 'student') {
+                        window.location.href = 'session_booking.html';
+                    } else {
+                        window.location.href = 'monitor.html';
+                    }
+                } else if (data.status === 'wrong_password') {
+                    alert('Incorrect password. Please try again.');
+                } else if (data.status === 'not_found') {
+                    if (confirm('Account not found. Do you want to register now?')) {
+                        window.location.href = 'online_registration.html';
+                    }
+                } else {
+                    alert('An error occurred. Please try again.');
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Login failed due to a server error.');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JCU Gym System</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="profile-body">
+    <div class="container">
+        <header>
+            <h1>JCU Gym System</h1>
+            <a href="index.html">
+                <img src="image/jcu_logo.png" alt="JCU Logo">
+            </a>
+        </header>
+
+        <!-- Dynamic navbar (unchanged logic) -->
+        <nav class="nav_user" id="navBar"></nav>
+
+        <hr class="divider">
+
+        <main class="profile-main">
+            <section class="profile-card">
+                <div class="profile-card-header">
+                    <h2 class="profile-title">My Profile</h2>
+                    <p class="profile-subtitle">View and update your contact and emergency details.</p>
+                </div>
+
+                <form id="profileForm" class="profile-form">
+                    <div class="profile-grid">
+                        <label class="pf-field">
+                            <span>Name &amp; Staff ID</span>
+                            <input type="text" id="name_staff_id" name="name_staff_id" readonly>
+                        </label>
+
+                        <label class="pf-field">
+                            <span>Title</span>
+                            <input type="text" id="title" name="title" placeholder="Mr / Ms / Mrs">
+                        </label>
+
+                        <label class="pf-field">
+                            <span>Gender</span>
+                            <input type="text" id="gender" name="gender" placeholder="Male / Female">
+                        </label>
+
+                        <label class="pf-field">
+                            <span>Date of Birth</span>
+                            <input type="date" id="dob" name="dob">
+                        </label>
+
+                        <label class="pf-field">
+                            <span>Telephone</span>
+                            <input type="tel" id="telephone" name="telephone" placeholder="e.g. 9123 4567">
+                        </label>
+
+                        <label class="pf-field pf-field--full">
+                            <span>Email</span>
+                            <input type="email" id="email" name="email" placeholder="yourname@jcu.edu.sg">
+                        </label>
+
+                        <label class="pf-field">
+                            <span>Emergency Contact Name</span>
+                            <input type="text" id="emergency_name" name="emergency_name" placeholder="Full name">
+                        </label>
+
+                        <label class="pf-field">
+                            <span>Emergency Contact Number</span>
+                            <input type="tel" id="emergency_number" name="emergency_number" placeholder="e.g. 8123 4567">
+                        </label>
+                    </div>
+
+                    <div class="profile-actions">
+                        <button type="submit" class="btn btn-primary" id="saveBtn">
+                            <span class="btn-label">Save Changes</span>
+                            <span class="btn-spinner" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-ghost" id="resetBtn">Reset</button>
+                    </div>
+
+                    <p class="profile-hint">Note: Your Staff ID is read-only. Contact admin if it needs to be changed.</p>
+
+                    <div class="banner success" id="bannerSuccess" hidden>
+                        <strong>Saved.</strong> Your profile has been updated.
+                    </div>
+                    <div class="banner error" id="bannerError" hidden>
+                        <strong>Update failed.</strong> Please try again later.
+                    </div>
+                </form>
+            </section>
+
+            <aside class="profile-aside">
+                <h3>Tips</h3>
+                <ul>
+                    <li>Keep your emergency contact up to date.</li>
+                    <li>Use your official JCU email for bookings and notifications.</li>
+                    <li>Phone numbers should include a valid local prefix.</li>
+                </ul>
+            </aside>
+        </main>
+
+        <hr class="divider">
+
+        <footer>
+            <div class="contact_info">
+                <p>Email: <a href="mailto:jcu.edu.sg">jcu.edu.sg</a></p>
+                <p>Phone: <a href="tel:12345678">12345678</a></p>
+                <p>Fax: 4779 1244</p>
+                <p>Address: 149 Sims Drive Singapore 387380</p>
+                <p>&copy; Copyright 2022. ALL Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Auth check
+        const staffId = localStorage.getItem('name_staff_id');
+        const role = localStorage.getItem('role');
+        if (!staffId) {
+            alert("Please log in first.");
+            window.location.href = "index.html";
+        }
+
+        // Dynamic navbar (unchanged links)
+        const navBar = document.getElementById('navBar');
+        if (role === 'staff') {
+            navBar.innerHTML = `
+                <ul class="menu">
+                    <li class="menu-choice"><a href="monitor.html">Monitor</a></li>
+                    <li class="menu-choice"><a href="tracking.html">Tracking</a></li>
+                    <li class="menu-choice"><a href="profile.html">Profile</a></li>
+                </ul>
+            `;
+        } else {
+            navBar.innerHTML = `
+                <ul class="menu">
+                    <li class="menu-choice"><a href="session_booking.html">Session Booking</a></li>
+                    <li class="menu-choice"><a href="virtual_gym_tour.html">Virtual Gym Tour</a></li>
+                    <li class="menu-choice"><a href="ai_powered_trainer.html">AI-Powered Trainer</a></li>
+                    <li class="menu-choice"><a href="profile.html">Profile</a></li>
+                </ul>
+            `;
+        }
+
+        // Elements
+        const form = document.getElementById('profileForm');
+        const saveBtn = document.getElementById('saveBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const bannerSuccess = document.getElementById('bannerSuccess');
+        const bannerError = document.getElementById('bannerError');
+
+        function setLoading(isLoading) {
+            saveBtn.disabled = isLoading;
+            saveBtn.classList.toggle('is-loading', isLoading);
+        }
+
+        function hideBanners() {
+            bannerSuccess.hidden = true;
+            bannerError.hidden = true;
+        }
+
+        // Load profile data
+        const initialValues = {};
+        fetch(`/staff_search?name_staff_id=${encodeURIComponent(staffId)}`)
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('name_staff_id').value = data.name_staff_id || '';
+                document.getElementById('title').value = data.title || '';
+                document.getElementById('gender').value = data.gender || '';
+                document.getElementById('dob').value = data.dob ? String(data.dob).split('T')[0] : '';
+                document.getElementById('telephone').value = data.telephone || '';
+                document.getElementById('email').value = data.email || '';
+                document.getElementById('emergency_name').value = data.emergency_name || '';
+                document.getElementById('emergency_number').value = data.emergency_number || '';
+
+                // Snapshot for reset
+                Array.from(form.elements).forEach(el => {
+                    if (el.name) initialValues[el.name] = el.value;
+                });
+            });
+
+        // Save
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            hideBanners();
+            setLoading(true);
+
+            const formData = new FormData(form);
+
+            fetch('/update_profile', {
+                method: 'POST',
+                body: new URLSearchParams(formData)
+            })
+            .then(res => {
+                if (!res.ok) throw new Error('Network error');
+                return res.text();
+            })
+            .then(() => {
+                bannerSuccess.hidden = false;
+            })
+            .catch(() => {
+                bannerError.hidden = false;
+            })
+            .finally(() => setLoading(false));
+        });
+
+        // Reset to initially loaded values (no server call)
+        resetBtn.addEventListener('click', () => {
+            hideBanners();
+            Object.entries(initialValues).forEach(([k, v]) => {
+                const el = form.elements.namedItem(k);
+                if (el) el.value = v;
+            });
+        });
+    </script>
+</body>
+</html>

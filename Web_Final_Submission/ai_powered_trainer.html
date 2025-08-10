@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Trainer</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="ai-body">
+    <div class="container">
+        <header>
+            <h1>JCU Gym System</h1>
+            <a href="index.html">
+                <img src="image/jcu_logo.png" alt="JCU Logo">
+            </a>
+        </header>
+
+        <nav class="nav_user">
+            <ul class="menu">
+                <li class="menu-choice"><a href="session_booking.html">Session Booking</a></li> 
+                <li class="menu-choice"><a href="virtual_gym_tour.html">Virtual Gym Tour</a></li>
+                <li class="menu-choice"><a href="ai_powered_trainer.html">AI-Powered Trainer</a></li>
+                <li class="menu-choice"><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+
+        <hr class="divider">
+
+        <main class="ai-main">
+            <section class="ai-card">
+                <div class="ai-card-header">
+                    <h2 class="ai-title">Get Your Personalized Workout Plan</h2>
+                    <p class="ai-subtitle">Fill in your details below and generate a plan tailored to your goals.</p>
+                </div>
+
+                <!-- Form area -->
+                <form id="planForm" class="ai-form">
+                    <div class="ai-grid">
+                        <label class="ai-field">
+                            <span>Age</span>
+                            <input type="number" name="age" min="5" max="100" required placeholder="e.g. 22">
+                        </label>
+
+                        <label class="ai-field">
+                            <span>Gender</span>
+                            <select name="gender" required>
+                                <option value="">--Select--</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </label>
+
+                        <label class="ai-field ai-field--full">
+                            <span>Fitness Goal</span>
+                            <div class="ai-chips" data-target="fitnessGoal">
+                                <button type="button" data-value="build muscle" class="chip">Build Muscle</button>
+                                <button type="button" data-value="lose weight" class="chip">Lose Weight</button>
+                                <button type="button" data-value="improve endurance" class="chip">Improve Endurance</button>
+                                <button type="button" data-value="increase flexibility" class="chip">Increase Flexibility</button>
+                                <button type="button" data-value="general fitness" class="chip">General Fitness</button>
+                                <button type="button" data-value="rehabilitation" class="chip">Rehabilitation / Recovery</button>
+                            </div>
+                            <select name="fitnessGoal" required>
+                                <option value="">--Select--</option>
+                                <option value="build muscle">Build Muscle</option>
+                                <option value="lose weight">Lose Weight</option>
+                                <option value="improve endurance">Improve Endurance</option>
+                                <option value="increase flexibility">Increase Flexibility</option>
+                                <option value="general fitness">General Fitness</option>
+                                <option value="rehabilitation">Rehabilitation / Recovery</option>
+                            </select>
+                        </label>
+
+                        <label class="ai-field">
+                            <span>Experience</span>
+                            <div class="ai-chips" data-target="experience">
+                                <button type="button" data-value="beginner" class="chip">Beginner</button>
+                                <button type="button" data-value="intermediate" class="chip">Intermediate</button>
+                                <button type="button" data-value="advanced" class="chip">Advanced</button>
+                            </div>
+                            <select name="experience" required>
+                                <option value="">--Select--</option>
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="advanced">Advanced</option>
+                            </select>
+                        </label>
+
+                        <label class="ai-field">
+                            <span>Available Training Days / Week</span>
+                            <input type="number" name="availableDays" min="1" max="7" required placeholder="1 - 7">
+                        </label>
+                    </div>
+
+                    <div class="ai-actions">
+                        <button type="submit" class="btn btn-primary" id="generateBtn">
+                            <span class="btn-label">Generate Plan</span>
+                            <span class="btn-spinner" aria-hidden="true"></span>
+                        </button>
+                        <button type="button" class="btn btn-ghost" id="clearBtn">Clear</button>
+                    </div>
+
+                    <p class="ai-hint">Note: Your answers are not stored. They are only used to generate this plan.</p>
+                </form>
+            </section>
+
+            <!-- Output area -->
+            <section class="ai-card ai-output-card">
+                <div class="ai-output-header">
+                    <h3 class="ai-output-title">Your Workout Plan</h3>
+                    <div class="ai-output-tools">
+                        <button class="btn btn-ghost btn-sm" id="copyBtn">Copy</button>
+                        <button class="btn btn-ghost btn-sm" id="downloadBtn">Download .txt</button>
+                    </div>
+                </div>
+                <pre id="planOutput" class="ai-output" aria-live="polite" aria-busy="false">Fill the form and click “Generate Plan”.</pre>
+                <p class="ai-error" id="errorMsg" hidden></p>
+            </section>
+
+            <!-- Tips -->
+            <aside class="ai-tips">
+                <h4>Tips</h4>
+                <ul>
+                    <li>For best results, train 3–5 days per week. If only 1–2 days are available, focus on full-body compound movements.</li>
+                    <li>If your goal is “Rehabilitation / Recovery”, consult a coach and get a professional assessment first.</li>
+                    <li>Once you generate a plan, you can use “Session Booking” to schedule specific time slots.</li>
+                </ul>
+            </aside>
+        </main>
+
+        <hr class="divider">
+
+        <footer>
+            <div class="contact_info">
+                <p>Email: <a href="mailto:jcu.edu.sg">jcu.edu.sg</a></p>
+                <p>Phone: <a href="tel:12345678">12345678</a></p>
+                <p>Fax: 4779 1244</p>
+                <p>Address: 149 Sims Drive Singapore 387380</p>
+                <p>&copy; Copyright 2022. ALL Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Chips -> Sync with dropdown
+        document.querySelectorAll('.ai-chips').forEach(group => {
+            group.addEventListener('click', (e) => {
+                if (!(e.target && e.target.matches('.chip'))) return;
+                const value = e.target.getAttribute('data-value');
+                const targetName = group.getAttribute('data-target');
+                const select = group.parentElement.querySelector(`select[name="${targetName}"]`);
+                if (select) {
+                    select.value = value;
+                    group.querySelectorAll('.chip').forEach(c => c.classList.remove('chip--active'));
+                    e.target.classList.add('chip--active');
+                }
+            });
+        });
+
+        const planForm = document.getElementById('planForm');
+        const planOutput = document.getElementById('planOutput');
+        const errorMsg = document.getElementById('errorMsg');
+        const generateBtn = document.getElementById('generateBtn');
+        const clearBtn = document.getElementById('clearBtn');
+
+        function setLoading(isLoading) {
+            generateBtn.disabled = isLoading;
+            generateBtn.classList.toggle('is-loading', isLoading);
+            planOutput.setAttribute('aria-busy', String(isLoading));
+        }
+
+        function validateInputs(data) {
+            const age = Number(data.age);
+            const days = Number(data.availableDays);
+            if (!Number.isFinite(age) || age < 5 || age > 100) {
+                throw new Error('Please enter a valid age between 5 and 100.');
+            }
+            if (!Number.isFinite(days) || days < 1 || days > 7) {
+                throw new Error('Available training days must be between 1 and 7.');
+            }
+            if (!data.gender) throw new Error('Please select your gender.');
+            if (!data.fitnessGoal) throw new Error('Please select your fitness goal.');
+            if (!data.experience) throw new Error('Please select your experience level.');
+        }
+
+        planForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            errorMsg.hidden = true;
+            errorMsg.textContent = '';
+
+            const formData = Object.fromEntries(new FormData(this).entries());
+
+            try {
+                validateInputs(formData);
+            } catch (err) {
+                errorMsg.textContent = err.message || 'Invalid input.';
+                errorMsg.hidden = false;
+                return;
+            }
+
+            setLoading(true);
+            planOutput.textContent = 'Generating your plan...';
+
+            try {
+                const res = await fetch('/generate_plan', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                if (!res.ok) {
+                    throw new Error('Server error. Please try again later.');
+                }
+
+                const data = await res.json();
+                planOutput.textContent = (data && data.plan) ? data.plan : 'Failed to generate plan.';
+            } catch (err) {
+                console.error(err);
+                planOutput.textContent = 'Failed to generate plan.';
+                errorMsg.textContent = err.message || 'Network error.';
+                errorMsg.hidden = false;
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        clearBtn.addEventListener('click', () => {
+            planForm.reset();
+            document.querySelectorAll('.chip--active').forEach(c => c.classList.remove('chip--active'));
+            planOutput.textContent = 'Fill the form and click “Generate Plan”.';
+            errorMsg.hidden = true;
+            errorMsg.textContent = '';
+        });
+
+        document.getElementById('copyBtn').addEventListener('click', async (event) => {
+            try {
+                await navigator.clipboard.writeText(planOutput.textContent);
+                const original = event.target.textContent;
+                event.target.textContent = 'Copied!';
+                setTimeout(() => event.target.textContent = original, 1200);
+            } catch {
+                alert('Copy failed. Please select and copy manually.');
+            }
+        });
+
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            const blob = new Blob([planOutput.textContent || ''], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'workout_plan.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        const staffId = localStorage.getItem('name_staff_id');
+        if (!staffId) {
+            alert("Please log in first.");
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
